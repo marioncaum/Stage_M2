@@ -192,26 +192,128 @@ Envie up to any slot : $i$ envie $j$ up to any slot ssi $\forall s\in \sigma(i),
     Un ordonnancement sans envie n'est pas toujours Pareto-optimal.
 \end{prop}
 \begin{exemple}
-    On considère une instance avec une machine et deux agents $A$ et $B$ qui veulent optimiser le même critère. Chaque agent a deux tâches à exécuter sur la machine. On note $A_i$ (reps. $B_i$) la tâche $i$ de l'agent $A$ (resp. $B$) pour $i \in \lbrace 1,2\rbrace$. Chaque tâche a une deadline : $d_1^A = 1$, $d_2^A = 3$, $d_1^B = 2$ et $d_2^B = 4$.\\
-    On appelle $\sigma_1$ l'ordonnancement suivant :
-    \begin{ganttchart}[inline]{1}{8}
-        \ganttbar{$A_1$}{1}{2} 
-        \ganttbar{$B_1$}{3}{4} 
-        \ganttbar{$B_2$}{5}{6} 
-        \ganttbar{$A_2$}{7}{8}
-    \end{ganttchart}\\
-    On appelle $\sigma_2$ l'ordonnancement suivant :
-    \begin{ganttchart}[inline]{1}{8}
-        \ganttbar{$A_1$}{1}{2} 
-        \ganttbar{$B_1$}{3}{4} 
-        \ganttbar{$A_2$}{5}{6} 
-        \ganttbar{$B_2$}{7}{8}
-    \end{ganttchart}
+On considère une instance avec une machine et deux agents $A$ et $B$ qui veulent optimiser le même critère. Chaque agent a deux tâches à exécuter sur la machine. On note $A_i$ (reps. $B_i$) la tâche $i$ de l'agent $A$ (resp. $B$) pour $i \in \lbrace 1,2\rbrace$. Chaque tâche a une deadline : $d_1^A = 1$, $d_2^A = 3$, $d_1^B = 2$ et $d_2^B = 4$.\\
+On appelle $\sigma_1$ l'ordonnancement suivant :
+\begin{ganttchart}[inline]{1}{8}
+    \ganttbar{$A_1$}{1}{2} 
+    \ganttbar{$B_1$}{3}{4} 
+    \ganttbar{$B_2$}{5}{6} 
+    \ganttbar{$A_2$}{7}{8}
+\end{ganttchart}\\
+On appelle $\sigma_2$ l'ordonnancement suivant :
+\begin{ganttchart}[inline]{1}{8}
+    \ganttbar{$A_1$}{1}{2} 
+    \ganttbar{$B_1$}{3}{4} 
+    \ganttbar{$A_2$}{5}{6} 
+    \ganttbar{$B_2$}{7}{8}
+\end{ganttchart}\\
+\begin{itemize}
+	\item Si $A$ et $B$ veulent minimiser $\sum T_i$ : $\sigma_1$ est sans-envie mais n'est pas optimal. En effet, $\left\{\begin{array}{l}
+	f_A(\sigma_1(A)) = 1 \leq f_A(\sigma_1(B)) = 1\\
+	f_B(\sigma_1(B)) = 0 \leq f_B(\sigma_1(A)) = 0
+	\end{array}
+	\right.$ et $\left\{\begin{array}{l}
+	f_A(\sigma_2(A)) = 0 < f_A(\sigma_1(A)) = 1\\
+	f_B(\sigma_2(B)) = 0 \leq f_B(\sigma_1(B)) = 0
+	\end{array}
+	\right.$\\
+	\item Si $A$ et $B$ veulent minimiser $\sum U_i$ : $\sigma_1$ est sans-envie mais n'est pas optimal. En effet, $\left\{\begin{array}{l}
+	f_A(\sigma_1(A)) = 1 \leq f_A(\sigma_1(B)) = 1\\
+	f_B(\sigma_1(B)) = 0 \leq f_B(\sigma_1(A)) = 0
+	\end{array}
+	\right.$ et $\left\{\begin{array}{l}
+	f_A(\sigma_2(A)) = 0 < f_A(\sigma_1(A)) = 1\\
+	f_B(\sigma_2(B)) = 0 \leq f_B(\sigma_1(B)) = 0
+	\end{array}
+	\right.$
+	\item Si $A$ et $B$ veulent minimiser $\sum E_i$ : $\sigma_1$ est sans-envie mais n'est pas optimal. En effet, $\left\{\begin{array}{l}
+	f_A(\sigma_1(A)) = 0 \leq f_A(\sigma_1(B)) = 0\\
+	f_B(\sigma_1(B)) = 1 \leq f_B(\sigma_1(A)) = 1
+	\end{array}
+	\right.$ et $\left\{\begin{array}{l}
+	f_A(\sigma_2(A)) = 0 \leq f_A(\sigma_1(A)) = 0\\
+	f_B(\sigma_2(B)) = 0 < f_B(\sigma_1(B)) = 1
+	\end{array}
+	\right.$\\
+	\item Si $A$ et $B$ veulent minimiser $\sum S_i$ : $\sigma_1$ est sans-envie mais n'est pas optimal. En effet, $\left\{\begin{array}{l}
+	f_A(\sigma_1(A)) = 1 \leq f_A(\sigma_1(B)) = 1\\
+	f_B(\sigma_1(B)) = 1 \leq f_B(\sigma_1(A)) = 1
+	\end{array}
+	\right.$ et $\left\{\begin{array}{l}
+	f_A(\sigma_2(A)) = 0 < f_A(\sigma_1(A)) = 1\\
+	f_B(\sigma_2(B)) = 0 < f_B(\sigma_1(B)) = 1
+	\end{array}
+	\right.$\\
+	\item Si $A$ et $B$ veulent minimiser $\sum D_i$ : $\sigma_1$ est sans-envie mais n'est pas optimal. En effet, $\left\{\begin{array}{l}
+	f_A(\sigma_1(A)) = 1 \leq f_A(\sigma_1(B)) = 1\\
+	f_B(\sigma_1(B)) = 1 \leq f_B(\sigma_1(A)) = 1
+	\end{array}
+	\right.$ et $\left\{\begin{array}{l}
+	f_A(\sigma_2(A)) = 0 < f_A(\sigma_1(A)) = 1\\
+	f_B(\sigma_2(B)) = 0 < f_B(\sigma_1(B)) = 1
+	\end{array}
+	\right.$
+    
+\end{itemize}     
     
     
 \end{exemple}
 
+\begin{prop}
+	Minimiser $\sum L_i$ revient à minimiser $\sum C_i$.
+\end{prop}
+\begin{proof}
+	$\sum L_i = \sum (C_i - d_i) = \sum C_i - \sum d_i$. Or $\sum d_i$ est une constante. Donc si on minimise $\sum C_i$, on minimise également $\sum L_i$.
+\end{proof}
 
+\begin{exemple}
+On considère une instance avec 2 machines, 3 agents $A$, $B$ et $D$ qui veulent optimiser $\sum C_i$. Chaque agent a 3 tâches à exécuter. On note $A_i$ (resp. $B_i$ et $D_i$) la tâche $i$ de l'agent $A$ (reps. $B$ et $D$) pour $i\in \{1, 2, 3\}$.\\
+On appelle $\sigma_1$ l'ordonnancement suivant : 
+\begin{ganttchart}[inline]{1}{10}
+    \ganttbar{$A_1$}{1}{2} 
+    \ganttbar{$D_1$}{3}{4} 
+    \ganttbar{$A_2$}{7}{8} 
+    \ganttbar{$B_3$}{9}{10}\\
+    \ganttbar{$B_1$}{1}{2} 
+    \ganttbar{$D_3$}{3}{4} 
+    \ganttbar{$B_2$}{5}{6} 
+    \ganttbar{$A_3$}{7}{8} 
+    \ganttbar{$D_2$}{9}{10}
+\end{ganttchart}\\
+On appelle $\sigma_2$ l'ordonnancement suivant : 
+\begin{ganttchart}[inline]{1}{10}
+    \ganttbar{$A_1$}{1}{2} 
+    \ganttbar{$D_1$}{3}{4} 
+    \ganttbar{$D_2$}{5}{6}
+    \ganttbar{$D_3$}{7}{8} 
+    \ganttbar{$B_3$}{9}{10}\\
+    \ganttbar{$B_1$}{1}{2} 
+    \ganttbar{$B_2$}{3}{4} 
+    \ganttbar{$A_2$}{5}{6} 
+    \ganttbar{$A_3$}{7}{8} 
+\end{ganttchart}\\
+
+$\sigma_1$ est sans-envie mais n'est pas optimal. En effet, \\\\
+$\left\{\begin{array}{l}
+f_A(\sigma_1(A)) = 9 \leq f_A(\sigma_1(B)) = 9\\
+f_A(\sigma_1(A)) = 9 \leq f_A(\sigma_1(D)) = 9
+\end{array}
+\right.$, $\left\{\begin{array}{l}
+f_B(\sigma_1(B)) = 9 \leq f_B(\sigma_1(A)) = 9\\
+f_B(\sigma_1(B)) = 9 \leq f_B(\sigma_1(D)) = 9
+\end{array}
+\right.$, \\\\
+$\left\{\begin{array}{l}
+f_D(\sigma_1(D)) = 9 \leq f_D(\sigma_1(A)) = 9\\
+f_D(\sigma_1(D)) = 9 \leq f_D(\sigma_1(B)) = 9
+\end{array}
+\right.$ et $\left\{\begin{array}{l}
+f_A(\sigma_2(A)) = 8 < f_A(\sigma_1(A)) = 9\\
+f_B(\sigma_2(B)) = 9 \leq f_B(\sigma_1(B)) = 9\\
+f_D(\sigma_2(D)) = 8 < f_D(\sigma_1(D)) = 9
+\end{array}
+\right.$.
+\end{exemple}
 
 
 \end{document}
