@@ -142,7 +142,7 @@ $D_i^k = |D_i^k|$
 \newpage
 
 \subsection{Equité}\label{equite}
-\subsubsection{Définition}
+
 \noindent
 On cherche un ordonnancement où chaque agent a exactement $x$ slot : $\forall k \in \lbrace 1, \dots , n \rbrace, |\sigma(k)| = x$.\\\\
 $\forall k, k' \lbrace 1, \dots , n \rbrace, \sigma(k)\cap\sigma(k') = \emptyset$.\\\\
@@ -173,7 +173,8 @@ envie de la société : $\max\limits_i e_i$ ou $\sum\limits_i e_i$\\\\
 Envie up to one slot : $i$ envie $j$ up to one slot ssi $\exists s\in \sigma(i), f_i(\sigma(i)\backslash s)\leq f_i(\sigma(j))$\\\\
 Envie up to any slot : $i$ envie $j$ up to any slot ssi $\forall s\in \sigma(i), f_i(\sigma(i)\backslash s)\leq f_i(\sigma(j))$\\\\
 
-\subsubsection{Propriétés}
+
+\section{Propriétés}
 \begin{prop}
     Au moins un ordonnancement egalitarian-optimal est Pareto-optimal.
 \end{prop}
@@ -315,5 +316,123 @@ f_D(\sigma_2(D)) = 8 < f_D(\sigma_1(D)) = 9
 \right.$.
 \end{exemple}
 
+\section{Algorithme}
+\subsection{Roud-Robin}
+\noindent
+On considère que tous les agents ont au moins deux tâches.\\
+L'algorithme fonctionne de la façon suivante :
+\begin{itemize}
+	\item Chaque agent donne pour chacune de ses tâches un coût aux différents slots.
+	\item On définit un ordre $p$ des agents.
+	\item A chaque tour, chaque agent choisit le slot qui lui coûte le moins.
+\end{itemize}
+
+\begin{exemple}
+On considère une instance avec deux machines et trois agents $A$, $B$, et $D$. Les agents $A$ et $B$ veulent minimiser $\sum T_i$ et l'agent $D$ veut minimiser $\sum C_i$. Chaque agent a trois tâches à executer. On note $A_i$ (resp. $B_i$ et $D_i$) la tâche $i$ de l'agent $A$ (reps. $B$ et $D$) pour $i\in \{1, 2, 3\}$. Chaque tâche a une deadline : $d_1^A = 3$, $d_2^A = 1$, $d_2^A = 1$, $d_1^B = 1$, $d_2^B = 2$, $d_3^B = 3$, $d_1^D = 2$, $d_2^D = 4$, et $d_3^D = 4$. On considère l'ordre suivant : $DBA$. En cas d'égalité des coûts on considère les règles suivantes : 
+\begin{itemize}
+\item[1] on choisit la tâche qui a la plus petite deadline
+\item[2] on choisit la tâche qui a l'indice le plus petit
+\item[3] on choisit le slot le plus proche de la dealine
+\item[4] on choisit la machine avec l'indice le plus petit.
+\end{itemize}
+Le tableau des coûts est le suivant :
+
+\begin{table}[H]
+    \begin{tabular}{|c||c|c|c|c|c||c|c|c|c|}
+        \hline
+        & $s_1^1$ & $s_2^1$ & $s_3^1$ & $s_4^1$ & $s_5^1$ & $s_1^2$ & $s_2^2$ & $s_3^2$ & $s_4^2$ \\
+        \hline 
+        $A_1$ & 0 & 0 & 0 & 1 & 2 & 0 & 0 & 0 & 1 \\
+        $A_2$ & 0 & 1 & 2 & 3 & 4 & 0 & 1 & 2 & 3 \\
+        $A_3$ & 0 & 1 & 2 & 3 & 4 & 0 & 1 & 2 & 3 \\
+        \hline
+        $B_1$ & 0 & 1 & 2 & 3 & 4 & 0 & 1 & 2 & 3 \\
+        $B_2$ & 0 & 0 & 1 & 2 & 3 & 0 & 0 & 1 & 2 \\
+        $B_3$ & 0 & 0 & 0 & 1 & 2 & 0 & 0 & 0 & 1 \\
+        \hline
+        $D_1$ & 1 & 2 & 3 & 4 & 5 & 1 & 2 & 3 & 4 \\
+        $D_2$ & 1 & 2 & 3 & 4 & 5 & 1 & 2 & 3 & 4 \\
+        $D_3$ & 1 & 2 & 3 & 4 & 5 & 1 & 2 & 3 & 4 \\
+        \hline
+    \end{tabular}
+\end{table}
+
+Tour 1 : 
+\begin{itemize}
+\item Agent $D$ : les slots qui lui coûtent le moins sont $s_1^1$ et $s_1^2$ pour chacune de ses tâches. Il choisit donc d'affecter $D_1$ au slot $s_1^1$.
+\item Agent $B$ : les slots qui lui coûtent le moins sont $s_1^2$ pour $B_1$, $s_2^1$, $s_1^2$ et $s_2^2$ pour $B_2$, et $s_2^1$, $s_3^1$, $s_1^2$, $s_2^2$ et $s_3^2$ pour $B_3$. Il choisit donc d'affecter $B_1$ au slot $s_1^2$.
+\item Agent $A$ : les slots qui lui coûtent le moins sont $s_2^1$, $s_3^1$, $s_2^2$ et $s_3^2$ pour $A_1$. Il choisit donc d'affecter $A_1$ au slot $s_3^1$
+\end{itemize}
+\begin{ganttchart}[inline]{1}{10}
+    \ganttbar{$D_1$}{1}{2} 
+    \ganttbar{}{3}{4} 
+    \ganttbar{$A_1$}{5}{6}
+    \ganttbar{}{7}{8} 
+    \ganttbar{}{9}{10}\\
+    \ganttbar{$B_1$}{1}{2} 
+    \ganttbar{}{3}{4} 
+    \ganttbar{}{5}{6} 
+    \ganttbar{}{7}{8} 
+\end{ganttchart}\\
+\noindent
+Tour 2 :
+\begin{itemize}
+\item Agent $D$ : les slots qui lui coûtent le moins sont $s_2^1$ et $s_2^2$ pour $D_2$ et $D_3$. Il choisit donc d'affecter $D_2$ au slot $s_2^1$.
+\item Agent $B$ : les slots qui lui coûtent le moins sont $s_2^2$ pour $B_2$, et $s_2^2$ et $s_3^2$ pour $B_3$. Il choisit donc d'affecter $B_2$ au slot $s_2^2$.
+\item Agent $A$ : le slot qui lui coûtent le moins est $s_3^2$ pour $A_2$ et $A_3$. Il choisit donc d'affecter $A_2$ au slot $s_3^2$
+\end{itemize}
+\begin{ganttchart}[inline]{1}{10}
+    \ganttbar{$D_1$}{1}{2} 
+    \ganttbar{$D_2$}{3}{4} 
+    \ganttbar{$A_1$}{5}{6}
+    \ganttbar{}{7}{8} 
+    \ganttbar{}{9}{10}\\
+    \ganttbar{$B_1$}{1}{2} 
+    \ganttbar{$B_2$}{3}{4} 
+    \ganttbar{$A_2$}{5}{6} 
+    \ganttbar{}{7}{8} 
+\end{ganttchart}\\
+\noindent
+Tour 3 :
+\begin{itemize}
+\item Agent $D$ : les slots qui lui coûtent le moins sont $s_4^1$ et $s_4^2$. Il choisit donc d'affecter $D_3$ au slot $s_4^1$.
+\item Agent $B$ : le slot qui lui coûtent le moins est $s_4^2$. Il choisit donc d'affecter $B_3$ au slot $s_4^2$.
+\item Agent $A$ : le seul slot restant est $s_5^1$. Il choisit donc d'affecter $A_3$ au slot $s_5^1$.
+\end{itemize}
+\begin{ganttchart}[inline]{1}{10}
+    \ganttbar{$D_1$}{1}{2} 
+    \ganttbar{$D_2$}{3}{4} 
+    \ganttbar{$A_1$}{5}{6}
+    \ganttbar{$D_3$}{7}{8} 
+    \ganttbar{$A_3$}{9}{10}\\
+    \ganttbar{$B_1$}{1}{2} 
+    \ganttbar{$B_2$}{3}{4} 
+    \ganttbar{$A_2$}{5}{6} 
+    \ganttbar{$B_3$}{7}{8} 
+\end{ganttchart}\\
+
+L’ordonnancement obtenu est sans-envie up to one slot : 
+\begin{itemize}
+\item Agent $A$ : $f_A(\sigma(A)) = 6$, $f_A(\sigma(B)) = 4$ et $f_A(\sigma(D)) = 4$. Mais si on lui retire $s_5^1$  : $f_A(\sigma(A)\backslash\{s_5^1\}) = 2$.
+\item Agent $B$ : $f_B(\sigma(B)) = 1$, $f_B(\sigma(A)) = 5$ et $f_B(\sigma(D)) = 1$.
+\item Agent $D$ : $f_D(\sigma(D)) = 7$, $f_D(\sigma(A)) = 11$ et $f_D(\sigma(B)) = 7$.
+\end{itemize}
+
+\end{exemple}
+
+\begin{prop}
+Cet algorithme est sans-envie up to one slot.
+\end{prop}
+
+\begin{proof}
+Soit $p$ un ordre sur les agents. Soient $i, j \in \{1, \dots, n\}$. On note $s_i^t$ le slot alloué à l'agent $i$ au tour $t$, pour $t\in\{1,\dots,x\}$.\\
+\textbf{Cas 1 : $i<j$}\\
+\\
+\textbf{Cas 2 : $i>j$}
+\end{proof}
+
+\newpage
+\bibliographystyle{unsrt}
+\bibliography{ref}
 
 \end{document}

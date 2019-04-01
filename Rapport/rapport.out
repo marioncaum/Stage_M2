@@ -2,5 +2,6 @@
 \BOOKMARK [1][-]{section.2}{D\351finition du probl\350me}{}% 2
 \BOOKMARK [2][-]{subsection.2.1}{Ordonnancement}{section.2}% 3
 \BOOKMARK [2][-]{subsection.2.2}{Equit\351}{section.2}% 4
-\BOOKMARK [3][-]{subsubsection.2.2.1}{D\351finition}{subsection.2.2}% 5
-\BOOKMARK [3][-]{subsubsection.2.2.2}{Propri\351t\351s}{subsection.2.2}% 6
+\BOOKMARK [1][-]{section.3}{Propri\351t\351s}{}% 5
+\BOOKMARK [1][-]{section.4}{Algorithme}{}% 6
+\BOOKMARK [2][-]{subsection.4.1}{Roud-Robin}{section.4}% 7
