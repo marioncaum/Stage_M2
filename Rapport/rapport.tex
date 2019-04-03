@@ -421,14 +421,24 @@ L’ordonnancement obtenu est sans-envie up to one slot :
 \end{exemple}
 
 \begin{prop}
-Cet algorithme est sans-envie up to one slot.
+Cet algorithme est sans-envie up to one slot si les coûts sont positifs et que les agents considèrent soit le coût maximal, soit la somme des coûts.
 \end{prop}
 
 \begin{proof}
-Soit $p$ un ordre sur les agents. Soient $i, j \in \{1, \dots, n\}$. On note $s_i^t$ le slot alloué à l'agent $i$ au tour $t$, pour $t\in\{1,\dots,x\}$.\\
+Soit $p$ un ordre sur les agents. Soient $i, j \in \{1, \dots, n\}$. On note $s_i^t$ le slot alloué à l'agent $i$ au tour $t$, pour $t\in\{1,\dots,x\}$. On note $\sigma$ l'ordonnancement obtenu avec l'algorithme présenté dans cette partie.\\
 \textbf{Cas 1 : $i<j$}\\
-\\
-\textbf{Cas 2 : $i>j$}
+A chaque tour, $p(i)$ choisi le slot libre le moins coûteux pour lui avant $p(j)$ :\\
+ $\forall t\in \{1, \dots, x\}, f_{p(i)}(s^t_{p(i)})\leq f_{p(i)}(s^t_{p(j)})$\\
+ Si $i$ considère le coût maximal : $f_{p(i)}(\sigma(i)) = \max\limits_{t = 1}^x f_{p(i)}(s^t_{p(i)}) \leq f_{p(i)}(\sigma(j)) = \max\limits_{t = 1}^x f_{p(i)}(s^t_{p(j)})$\\
+ Si $i$ considère la somme des coûts : $f_{p(i)}(\sigma(i)) = \sum\limits_{t = 1}^x f_{p(i)}(s^t_{p(i)})\leq f_{p(i)}(\sigma(j)) = \sum\limits_{t = 1}^x f_{p(i)}(s^t_{p(j)})$\\
+\textbf{Cas 2 : $i>j$}\\
+Soit $t\in\{1,\dots,x-1\}$.\\
+Le slot alloué à $p(i)$ au tour $t$ lui coûte moins que le slot alloué à $p(j)$ au tour $t+1$ : \\
+$f_{p(i)}(s^t_{p(i)})\leq f_{p(i)}(s^{t+1}_{p(j)})$\\
+Si $i$ considère le coût maximal : \\
+$f_{p(i)}(\sigma(i)\backslash\{s_{p(i)}^x\}) = \max\limits_{t = 1}^{x-1} f_{p(i)}(s^t_{p(i)}) = f_{p(i)}(s^{x-1}_{p(i)}) \leq f_{p(i)}(s^x_{p(j)}) = \max\limits_{t = 1}^{x} f_{p(i)}(s^t_{p(j)}) = f_{p(i)}(\sigma(j))$\\
+Si $i$ considère la somme des coûts : \\
+$f_{p(i)}(\sigma(i)\backslash\{s_{p(i)}^x\}) = \sum\limits_{t = 1}^{x-1} f_{p(i)}(s^t_{p(i)}) \leq \sum\limits_{t = 2}^{x} f_{p(i)}(s^t_{p(j)}) \leq \sum\limits_{t = 1}^{x} f_{p(i)}(s^t_{p(j)}) = f_{p(i)}(\sigma(j))$.
 \end{proof}
 
 \newpage
