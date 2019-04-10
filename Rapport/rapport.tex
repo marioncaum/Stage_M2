@@ -180,8 +180,8 @@ Envie up to any slot : $i$ envie $j$ up to any slot ssi $\forall s\in \sigma(i),
 \end{prop}
 
 \begin{proof}
-    Par l'absurde :\\
-    Soit $\sigma$ un ordonnancement egalitarian-optimal. Supposons que $\sigma$ n'est pas Pareto-optimal. Il existe donc un ordonnancement $\sigma'$ Pareto-optimal qui domine $\sigma$ et qui n'est pa egalitarian-optimal.\\
+    Par l'absurde : on suppose qu'il n'existe pas d'ordonnancement egalitarian-optimal et Pareto-optimal.\\
+    Soit $\sigma$ un ordonnancement egalitarian-optimal. $\sigma$ n'est donc pas Pareto-optimal. Il existe donc un ordonnancement $\sigma'$ Pareto-optimal qui domine $\sigma$ et qui n'est pas egalitarian-optimal.\\
     2 cas possibles : 
     \begin{itemize}
         \item $\max_{i = 1}^n f_i(\sigma'(i)) = \max_{i = 1}^n f_i(\sigma(i))$ : comme $\sigma$ est egalitarian-optimal, alors $\sigma'$ l'est aussi $\implies$ contradiction.
@@ -317,7 +317,7 @@ f_D(\sigma_2(D)) = 8 < f_D(\sigma_1(D)) = 9
 \end{exemple}
 
 \section{Algorithme}
-\subsection{Roud-Robin}
+\subsection{Round-Robin}
 \noindent
 On considère que tous les agents ont au moins deux tâches.\\
 L'algorithme fonctionne de la façon suivante :
