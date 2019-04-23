@@ -1,0 +1,123 @@
+\documentclass[12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage{graphicx}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage[babel=true]{csquotes}
+\usepackage{color} 
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{float}
+\usepackage{listings}
+\usepackage{mathrsfs}
+\usepackage{pgfgantt}
+
+\definecolor{linkcolor}{rgb}{0,0,0.3}
+
+\hypersetup{colorlinks,
+            citecolor = linkcolor,
+            filecolor = linkcolor,
+            linkcolor = linkcolor,
+            urlcolor = linkcolor}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Définition}
+\newtheorem{theorem}{Théorème}
+\newtheorem{lemma}{Lemme}
+\newtheorem{prop}{Propriété}
+\newtheorem{exemple}{Exemple}
+
+\titleformat{\part}
+  {\normalfont\LARGE\bfseries}{\thepart}{1em}{}
+\titlespacing*{\part}{0pt}{3.5ex plus 1ex minus .2ex}{2.3ex plus .2ex}
+
+\newcommand\mycom[2]{\genfrac{}{}{0pt}{}{#1}{#2}}
+
+\setcounter{secnumdepth}{5}
+\setcounter{tocdepth}{5}
+
+\lstset{backgroundcolor=\color{white},
+  basicstyle=\footnotesize,
+  breakatwhitespace=false,
+  breaklines=true,
+  captionpos=b,
+  commentstyle=\color{mygreen},
+  deletekeywords={...},
+  escapeinside={\%*}{*)},
+  extendedchars=true,
+  frame=single,
+  keepspaces=true,
+  keywordstyle=\color{blue},
+  language=Python,
+  morekeywords={*,...},
+  numbers=left,
+  numbersep=5pt,
+  numberstyle=\tiny\color{mygray},
+  rulecolor=\color{black},
+  showspaces=false,
+  showstringspaces=false,
+  showtabs=false,
+  stepnumber=5,
+  stringstyle=\color{mymauve},
+  tabsize=4,
+  title=\lstname 
+}
+
+%\usepackage{amsfonts}
+%\usepackage{lilyglyphs}
+%\usepackage{stmaryrd}
+%\usepackage{makeidx}
+%\makeindex
+%\usepackage[english, onelanguage]{algorithm2e}
+%\theoremstyle{plain} \newtheorem{prop}{Proposition}
+
+\title{\vspace{20mm}
+        \LARGE \textbf {Ordonnancement et équité}\\
+        \vspace{8mm}
+        \large \textbf{Rapport de stage}\\
+        \vspace{10mm}
+        \begin{center}
+            \includegraphics[scale = 1]{main_title.jpg}
+        \end{center}
+        \author{Marion Caumartin}
+        \large {Master d'informatique M2}\\
+          \vspace{5mm}
+        \large {Faculté de Sciences et Ingénieurie de Sorbonne Université \vspace{15mm}}\\ 
+        \date{\vspace{10mm} \textsf{\textrm{\textit{6 mars 2019}}}}}
+
+
+
+\begin{document}
+
+\maketitle
+\thispagestyle{empty}
+
+\newpage
+
+\tableofcontents
+\thispagestyle{empty}
+
+\newpage
+\setcounter{page}{1}
+\section{Descriptif du stage}
+\noindent
+Les problèmes d'ordonnancement constituent un domaine important en recherche opérationnelle. Ils traitent de l'affectation de tâches à des machines, et de l'exécution de ces tâches au cours du temps : il s'agit de savoir où - sur quelle machine - et quand commencera chaque tâche. Récemment, des problèmes d'ordonnancement en présence de différents acteurs ont été étudiés. Cependant, très peu de critères d'équité ont été appliqués aux problèmes d'ordonnancement (hormis le critère classique qui consiste à minimiser le coût maximal d'une machine).\\\\
+La théorie du partage équitable est un domaine central en choix social computationnel. Elle s'intéresse à définir des règles d'affectation de ressources à des agents de manière à satisfaire au mieux les agents, sachant que les préférences de ceux-ci peuvent avoir différentes structures inhérentes au problème. Un concept fréquemment utilisé pour évaluer les affectations est celui de l'absence d'envie (envy freeness) : une affectation de ressources est dite sans-envie si aucun des agents ne préfère le lot de ressources d'un autre agent à son propre lot.\\\\
+Le but de ce stage est d'appliquer des concepts et techniques développés en théorie du partage équitable, au domaine de l'ordonnancement. On cherche ainsi à évaluer la qualité des ordonnancements du point de vue de l'équité et à calculer des ordonnancements "équitables".
+
+\section{Objectifs du stage}
+
+\section{Positionnement du sujet par rapport à l'existant}
+
+\section{Thématiques du sujet}
+
+\section{Travaux effectués lors des deux premiers mois}
+
+\section{Calendrier prévisionnel des tâches restant à effectuer}
+
+\end{document}

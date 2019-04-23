@@ -6,3 +6,4 @@
 \contentsline {section}{\numberline {3}Propri\IeC {\'e}t\IeC {\'e}s}{3}{section.3}
 \contentsline {section}{\numberline {4}Algorithme}{5}{section.4}
 \contentsline {subsection}{\numberline {4.1}Round-Robin}{5}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}Ordonnancement sans-envi quand $m = 1$ et que tous les agents veulent minimiser $\DOTSB \sum@ \slimits@ C_i$}{7}{subsection.4.2}
