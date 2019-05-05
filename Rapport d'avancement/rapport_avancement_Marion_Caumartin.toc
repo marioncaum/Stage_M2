@@ -1,0 +1,7 @@
+\babel@toc {french}{}
+\contentsline {section}{\numberline {1}Descriptif du stage}{1}{section.1}% 
+\contentsline {section}{\numberline {2}Objectifs du stage}{1}{section.2}% 
+\contentsline {section}{\numberline {3}Positionnement du sujet par rapport \IeC {\`a} l'existant}{1}{section.3}% 
+\contentsline {section}{\numberline {4}Th\IeC {\'e}matiques du sujet}{1}{section.4}% 
+\contentsline {section}{\numberline {5}Travaux effectu\IeC {\'e}s lors des deux premiers mois}{2}{section.5}% 
+\contentsline {section}{\numberline {6}Calendrier pr\IeC {\'e}visionnel des t\IeC {\^a}ches restant \IeC {\`a} effectuer}{2}{section.6}% 

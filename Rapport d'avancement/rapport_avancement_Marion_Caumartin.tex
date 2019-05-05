@@ -1,0 +1,142 @@
+\documentclass[12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage{graphicx}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage[babel=true]{csquotes}
+\usepackage{color} 
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{float}
+\usepackage{listings}
+\usepackage{mathrsfs}
+\usepackage{pgfgantt}
+
+\definecolor{linkcolor}{rgb}{0,0,0.3}
+
+\hypersetup{colorlinks,
+            citecolor = linkcolor,
+            filecolor = linkcolor,
+            linkcolor = linkcolor,
+            urlcolor = linkcolor}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Définition}
+\newtheorem{theorem}{Théorème}
+\newtheorem{lemma}{Lemme}
+\newtheorem{prop}{Propriété}
+\newtheorem{exemple}{Exemple}
+
+\titleformat{\part}
+  {\normalfont\LARGE\bfseries}{\thepart}{1em}{}
+\titlespacing*{\part}{0pt}{3.5ex plus 1ex minus .2ex}{2.3ex plus .2ex}
+
+\newcommand\mycom[2]{\genfrac{}{}{0pt}{}{#1}{#2}}
+
+\setcounter{secnumdepth}{5}
+\setcounter{tocdepth}{5}
+
+\lstset{backgroundcolor=\color{white},
+  basicstyle=\footnotesize,
+  breakatwhitespace=false,
+  breaklines=true,
+  captionpos=b,
+  commentstyle=\color{mygreen},
+  deletekeywords={...},
+  escapeinside={\%*}{*)},
+  extendedchars=true,
+  frame=single,
+  keepspaces=true,
+  keywordstyle=\color{blue},
+  language=Python,
+  morekeywords={*,...},
+  numbers=left,
+  numbersep=5pt,
+  numberstyle=\tiny\color{mygray},
+  rulecolor=\color{black},
+  showspaces=false,
+  showstringspaces=false,
+  showtabs=false,
+  stepnumber=5,
+  stringstyle=\color{mymauve},
+  tabsize=4,
+  title=\lstname 
+}
+
+%\usepackage{amsfonts}
+%\usepackage{lilyglyphs}
+%\usepackage{stmaryrd}
+%\usepackage{makeidx}
+%\makeindex
+%\usepackage[english, onelanguage]{algorithm2e}
+%\theoremstyle{plain} \newtheorem{prop}{Proposition}
+
+\title{\vspace{20mm}
+        \LARGE \textbf {Ordonnancement et équité}\\
+        \vspace{8mm}
+        \large \textbf{Rapport de stage}\\
+        \vspace{10mm}
+        \begin{center}
+            \includegraphics[scale = 1]{main_title.jpg}
+        \end{center}
+        \author{Marion Caumartin}
+        \large {Master d'informatique M2}\\
+          \vspace{5mm}
+        \large {Faculté de Sciences et Ingénieurie de Sorbonne Université \vspace{15mm}}\\ 
+        \date{\vspace{10mm} \textsf{\textrm{\textit{6 mars 2019}}}}}
+
+
+
+\begin{document}
+
+\maketitle
+\thispagestyle{empty}
+
+\newpage
+
+\tableofcontents
+\thispagestyle{empty}
+
+\newpage
+\setcounter{page}{1}
+\section{Descriptif du stage}
+\noindent
+Les problèmes d'ordonnancement constituent un domaine important en recherche opérationnelle. Ils traitent de l'affectation de tâches à des machines, et de l'exécution de ces tâches au cours du temps : il s'agit de savoir où - sur quelle machine - et quand commencera chaque tâche. Récemment, des problèmes d'ordonnancement en présence de différents acteurs ont été étudiés. Cependant, très peu de critères d'équité ont été appliqués aux problèmes d'ordonnancement (hormis le critère classique qui consiste à minimiser le coût maximal d'une machine).\\\\
+La théorie du partage équitable est un domaine central en choix social computationnel. Elle s'intéresse à définir des règles d'affectation de ressources à des agents de manière à satisfaire au mieux les agents, sachant que les préférences de ceux-ci peuvent avoir différentes structures inhérentes au problème. Un concept fréquemment utilisé pour évaluer les affectations est celui de l'absence d'envie (envy freeness) : une affectation de ressources est dite sans-envie si aucun des agents ne préfère le lot de ressources d'un autre agent à son propre lot.\\\\
+Le but de ce stage est d'appliquer des concepts et techniques développés en théorie du partage équitable, au domaine de l'ordonnancement. On cherche ainsi à évaluer la qualité des ordonnancements du point de vue de l'équité et à calculer des ordonnancements "équitables".
+
+\section{Objectifs du stage}
+\noindent
+On considère un ensemble d'agents qui ont chacun plusieurs tâches à ordonnancer sur un ensemble de machines. Chaque agent a un critère pour évaluer les ordonnancements. L'objectif du stage est d'adapter les notions d'allocation de ressources au problème décrit précédemment. Dans un premier temps nous considérons la simplification suivante : tous les agents ont le même nombre de tâche et les tâches ont toutes une durée unitaire.
+
+\section{Positionnement du sujet par rapport à l'existant}
+\noindent
+L'allocation de ressources non divisibles est un problème très étudié. Cependant, notre problème se rapproche plus de l'allocation de "chores" que de l'allocation de biens. Le problème d'allocation de biens est bien plus étudié que l'allocation de "chores". Certains résultats de l'allocation de biens non divisibles ne peuvent donc pas s'adapter à notre problème.\\\\
+Il existe également quelque recherche sur l'ordonnancement et l'équité mais les papiers existants étudient un problème un peu différent : les agents sont les machines.
+
+\section{Thématiques du sujet}
+\noindent
+Les thématiques de ce stage sont l'ordonnancement et l'allocation de ressources.
+
+\section{Travaux effectués lors des deux premiers mois}
+\noindent
+Lors des deux premiers mois, j'ai effectué des recherches sur l'allocation de ressources. J'ai également commencé à adapter certain résultat à notre problème. \\\\
+J'ai redéfinit les notions principales de l'allocation de ressource : ordonnancement Pareto-optimal, notions d'envie, utilitarian social welfare, egalitarian social welfare, lexmin et maxmin fair share.\\\\
+J'ai également redémontré certaines propriétés :
+\begin{itemize}
+\item[•] Au moins un ordonnancement egalitarian-optimal est Pareto-optimal.
+\item[•] Un ordonnancement sans-envie n'est pas toujours Pareto-optimal.
+\end{itemize}
+J'ai adapté l'algorithme Round-Robin à notre problème.\\\\
+J'ai également trouvé un algorithme qui renvoie un ordonnancement sans-envie quand il n'y a qu'une seule machine et que tous les agents veulent minimiser la somme des dates de fins.
+
+\section{Calendrier prévisionnel des tâches restant à effectuer}
+\noindent
+Tous les résultats exposés dans la partie précédente ont était démontré pour le problème simplifié (tous les agents ont le même nombre de tâche et toutes les tâches ont une durée unitaire). Lors de la suite du stage, il faudrait étudier le produite de Nash dans le cadre du problème simplifié où tous les agents veulent minimiser la somme des dates de fins ; étudier le problème des ordonnancements sans-envie et Pareto-optimal ; étudier le problème non simplifié.
+
+\end{document}

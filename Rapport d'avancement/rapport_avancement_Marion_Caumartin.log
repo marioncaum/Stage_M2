@@ -1,7 +1,7 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7000 64-bit) (preloaded format=pdflatex 2019.4.16)  25 APR 2019 17:06
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7000 64-bit) (preloaded format=pdflatex 2019.4.16)  25 APR 2019 17:26
 entering extended mode
-**./rapport.tex
-(rapport.tex
+**./rapport_avancement_Marion_Caumartin.tex
+(rapport_avancement_Marion_Caumartin.tex
 LaTeX2e <2018-12-01>
 ("C:\Users\mario\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\article.cls"
 Document Class: article 2018/09/03 v1.4i Standard LaTeX document class
@@ -848,8 +848,8 @@ File: lstlang1.sty 2019/02/27 1.8b listings language file
 )
 Package csquotes Info: Checking for multilingual support...
 Package csquotes Info: ... found 'babel' package.
- (rapport.aux)
-\openout1 = `rapport.aux'.
+ (rapport_avancement_Marion_Caumartin.aux)
+\openout1 = `rapport_avancement_Marion_Caumartin.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 95.
 LaTeX Font Info:    ... okay on input line 95.
@@ -949,14 +949,15 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 95.
 LaTeX Info: Redefining \pageref on input line 95.
 LaTeX Info: Redefining \nameref on input line 95.
- (rapport.out) (rapport.out)
+ (rapport_avancement_Marion_Caumartin.out)
+(rapport_avancement_Marion_Caumartin.out)
 \@outlinefile=\write4
-\openout4 = `rapport.out'.
+\openout4 = `rapport_avancement_Marion_Caumartin.out'.
 
 \c@lstlisting=\count189
 
 ABD: EveryShipout initializing macros
-<main_title.jpg, id=38, 475.7775pt x 253.94875pt>
+<main_title.jpg, id=30, 475.7775pt x 253.94875pt>
 File: main_title.jpg Graphic file (type jpg)
 <use main_title.jpg>
 Package pdftex.def Info: main_title.jpg  used on input line 98.
@@ -980,9 +981,9 @@ File: t1cmss.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 ) [1
 
 {C:/Users/mario/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map} <./main_titl
-e.jpg>] (rapport.toc)
+e.jpg>] (rapport_avancement_Marion_Caumartin.toc)
 \tf@toc=\write5
-\openout5 = `rapport.toc'.
+\openout5 = `rapport_avancement_Marion_Caumartin.toc'.
 
  [2]
 Underfull \hbox (badness 10000) in paragraph at lines 108--112
@@ -994,83 +995,37 @@ Underfull \hbox (badness 10000) in paragraph at lines 108--112
 
  []
 
+
+Underfull \hbox (badness 10000) in paragraph at lines 118--121
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 127--131
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 127--131
+
+ []
+
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.113 \newpage
-               [1]
-Underfull \hbox (badness 10000) in paragraph at lines 119--141
-
- []
+l.131 \begin{itemize}
+                      [1]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 132.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 119--141
+("C:\Users\mario\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\omscmr.fd"
+File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 132.
 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 119--141
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 119--141
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 119--141
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 119--141
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 119--141
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 119--141
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 119--141
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 119--141
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 119--141
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 119--141
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 119--141
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 119--141
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 119--141
+Underfull \hbox (badness 10000) in paragraph at lines 135--137
 
  []
 
@@ -1078,246 +1033,40 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.2}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.142 \newpage
-               [2]
-Underfull \hbox (badness 10000) in paragraph at lines 146--175
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 146--175
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 146--175
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 146--175
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 146--175
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 146--175
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 146--175
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 146--175
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 146--175
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 146--175
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 146--175
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 146--175
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 146--175
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 146--175
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 146--175
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 146--175
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 146--175
-
- []
-
-[3]
-Underfull \hbox (badness 10000) in paragraph at lines 196--211
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 212--221
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 230--239
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 239--248
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 271--296
-
- []
-
-[4]
-Underfull \hbox (badness 10000) in paragraph at lines 297--317
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 297--317
-
- []
-
-[5]
-Underfull \hbox (badness 10000) in paragraph at lines 412--413
-
- []
-
-[6]
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 444.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 444.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 444.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\sum@' on input line 444.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\slimits@' on input line 444.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `subscript' on input line 444.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 444.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 445--447
-
- []
-
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 496.
-
-("C:\Users\mario\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\omscmr.fd"
-File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
-)
-LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 496.
-
-[7]
-Overfull \hbox (10.2914pt too wide) in paragraph at lines 535--543
-[] 
- []
-
-
-Overfull \hbox (16.3609pt too wide) in paragraph at lines 543--551
-[] 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 543--551
-
- []
-
-[8]
-Overfull \hbox (18.85927pt too wide) in paragraph at lines 595--620
-[] 
- []
-
-[9]
-Underfull \hbox (badness 10000) in paragraph at lines 645--653
-
- []
-
-[10] [11]
-No file rapport.bbl.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 690.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 690.
-(rapport.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 690.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 690.
-Package rerunfilecheck Info: File `rapport.out' has not changed.
-(rerunfilecheck)             Checksum: E8A120EB1F6673C4C4052F16B53E5E9D;524.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 690.
+l.142 \end{document}
+                     [2]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 142.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 142.
+ (rapport_avancement_Marion_Caumartin.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 142.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 142.
+Package rerunfilecheck Info: File `rapport_avancement_Marion_Caumartin.out' has
+ not changed.
+(rerunfilecheck)             Checksum: 7721A06021AF13A4053CCCFF6E0DDFFD;438.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 142.
  ) 
 Here is how much of TeX's memory you used:
- 22975 strings out of 492945
- 433600 string characters out of 3126252
- 730749 words of memory out of 3000000
- 26427 multiletter control sequences out of 15000+200000
- 20192 words of font info for 60 fonts, out of 3000000 for 9000
+ 22449 strings out of 492945
+ 423397 string characters out of 3126252
+ 710749 words of memory out of 3000000
+ 25935 multiletter control sequences out of 15000+200000
+ 14924 words of font info for 40 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 62i,9n,67p,932b,938s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 62i,6n,67p,960b,483s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users\mario\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\
-ecti1200.pk> <C:\Users\mario\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/
-ec/dpi600\ecrm1200.pk> <C:\Users\mario\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour
-/jknappen/ec/dpi600\ecbx1200.pk> <C:\Users\mario\AppData\Local\MiKTeX\2.9\fonts
-/pk/ljfour/jknappen/ec/dpi600\ecbx1728.pk> <C:\Users\mario\AppData\Local\MiKTeX
-\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecti1440.pk> <C:\Users\mario\AppData\Lo
-cal\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1440.pk> <C:\Users\mario\
-AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1440.pk> <C:\Us
-ers\mario\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx2074.
-pk><C:/Users/mario/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfont
-s/cm/cmex10.pfb><C:/Users/mario/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/p
-ublic/amsfonts/cm/cmmi10.pfb><C:/Users/mario/AppData/Local/Programs/MiKTeX 2.9/
-fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/mario/AppData/Local/Program
-s/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/mario/AppData/L
-ocal/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/mar
-io/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><
-C:/Users/mario/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm
-/cmr6.pfb><C:/Users/mario/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/
-amsfonts/cm/cmr8.pfb><C:/Users/mario/AppData/Local/Programs/MiKTeX 2.9/fonts/ty
-pe1/public/amsfonts/cm/cmsy10.pfb><C:/Users/mario/AppData/Local/Programs/MiKTeX
- 2.9/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Users/mario/AppData/Local/Pro
-grams/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/mario/AppDa
-ta/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb><C:
-/Users/mario/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/rsfs/rsfs10.p
-fb>
-Output written on rapport.pdf (13 pages, 282273 bytes).
+ecrm1200.pk> <C:\Users\mario\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/
+ec/dpi600\ecbx1200.pk> <C:\Users\mario\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour
+/jknappen/ec/dpi600\ecbx1728.pk> <C:\Users\mario\AppData\Local\MiKTeX\2.9\fonts
+/pk/ljfour/jknappen/ec/dpi600\ecti1440.pk> <C:\Users\mario\AppData\Local\MiKTeX
+\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1440.pk> <C:\Users\mario\AppData\Lo
+cal\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1440.pk> <C:\Users\mario\
+AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx2074.pk><C:/Use
+rs/mario/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy1
+0.pfb>
+Output written on rapport_avancement_Marion_Caumartin.pdf (4 pages, 129705 byte
+s).
 PDF statistics:
- 430 PDF objects out of 1000 (max. 8388607)
- 33 named destinations out of 1000 (max. 500000)
- 82 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 284 PDF objects out of 1000 (max. 8388607)
+ 9 named destinations out of 1000 (max. 500000)
+ 66 words of extra memory for PDF output out of 10000 (max. 10000000)
 
