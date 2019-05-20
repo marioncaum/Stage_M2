@@ -4,6 +4,8 @@
 \contentsline {subsection}{\numberline {2.1}Ordonnancement}{2}{subsection.2.1}% 
 \contentsline {subsection}{\numberline {2.2}Equit\IeC {\'e}}{3}{subsection.2.2}% 
 \contentsline {section}{\numberline {3}Propri\IeC {\'e}t\IeC {\'e}s}{3}{section.3}% 
-\contentsline {section}{\numberline {4}Algorithme}{5}{section.4}% 
-\contentsline {subsection}{\numberline {4.1}Round-Robin}{5}{subsection.4.1}% 
-\contentsline {subsection}{\numberline {4.2}Ordonnancement sans-envi quand $m = 1$ et que tous les agents veulent minimiser $\DOTSB \sum@ \slimits@ C_i$}{7}{subsection.4.2}% 
+\contentsline {subsection}{\numberline {3.1}Ordonnancement sans-envi quand tous les agents veulent minimiser $\DOTSB \sum@ \slimits@ C_i$}{5}{subsection.3.1}% 
+\contentsline {section}{\numberline {4}Algorithme}{6}{section.4}% 
+\contentsline {subsection}{\numberline {4.1}Round-Robin}{6}{subsection.4.1}% 
+\contentsline {subsubsection}{\numberline {4.1.1}Round-Robin 2eme version}{8}{subsubsection.4.1.1}% 
+\contentsline {subsection}{\numberline {4.2}Ordonnancement sans-envi quand $m = 1$ et que tous les agents veulent minimiser $\DOTSB \sum@ \slimits@ C_i$}{9}{subsection.4.2}% 

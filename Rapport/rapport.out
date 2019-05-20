@@ -3,6 +3,8 @@
 \BOOKMARK [2][-]{subsection.2.1}{Ordonnancement}{section.2}% 3
 \BOOKMARK [2][-]{subsection.2.2}{Equit\351}{section.2}% 4
 \BOOKMARK [1][-]{section.3}{Propri\351t\351s}{}% 5
-\BOOKMARK [1][-]{section.4}{Algorithme}{}% 6
-\BOOKMARK [2][-]{subsection.4.1}{Round-Robin}{section.4}% 7
-\BOOKMARK [2][-]{subsection.4.2}{Ordonnancement sans-envi quand m = 1 et que tous les agents veulent minimiser Ci}{section.4}% 8
+\BOOKMARK [2][-]{subsection.3.1}{Ordonnancement sans-envi quand tous les agents veulent minimiser Ci}{section.3}% 6
+\BOOKMARK [1][-]{section.4}{Algorithme}{}% 7
+\BOOKMARK [2][-]{subsection.4.1}{Round-Robin}{section.4}% 8
+\BOOKMARK [3][-]{subsubsection.4.1.1}{Round-Robin 2eme version}{subsection.4.1}% 9
+\BOOKMARK [2][-]{subsection.4.2}{Ordonnancement sans-envi quand m = 1 et que tous les agents veulent minimiser Ci}{section.4}% 10

@@ -315,6 +315,51 @@ f_D(\sigma_2(D)) = 8 < f_D(\sigma_1(D)) = 9
 \end{array}
 \right.$.
 \end{exemple}
+\begin{prop}Si $nx = mq+r$, $\sum C_i = m\sum\limits_{i=1}^q i +r(q+1)$
+\end{prop}
+\begin{proof}
+\begin{figure}[H]
+\includegraphics[scale = 0.3]{somme_opt.jpg}
+\end{figure}
+L'ordonnancement de la figure précédente est optimal et contient $mq+r = nx$ slots. De plus la somme des dates de fins de cet ordonnancement vaut : $m\sum\limits_{i=1}^q i +r(q+1)$.
+\end{proof}
+\subsection{Ordonnancement sans-envi quand tous les agents veulent minimiser $\sum C_i$}
+\noindent
+On pose : $n = 2mq_n+r_n$ et $x = 2mq_x+r_x$.
+\begin{prop}
+Si $r_nr_x=2mq'+m$, il existe un ordonnancement sans-envie et Pareto-optimal.
+\end{prop}
+\begin{proof}
+$nx = 4m^2q_nq_x+2mq_nr_x+2mq_xr_n+r_nr_x=m(2q_xn+2q_nr_x+2q'+1)$\\
+\begin{align*}
+\sum C_i &= m(2q_xn+2q_nr_x+2q'+1)(q_xn+q_nr_x+q'+1)\\
+&= n[2q_x(q_xn+q_nr_x+q'+1) + q_x(2q_nr_x+2q'+1)] + (2mq_nr_x+2mq'+m)(q_nr_x+q'+1)\\
+&=n[2q_x(q_xn+q_nr_x+q'+1) + q_x(2q_nr_x+2q'+1)] + (2mq_nr_x+r_nr_x)(q_nr_x+q'+1)\\
+&=n[2q_x(q_xn+q_nr_x+q'+1) + q_x(2q_nr_x+2q'+1)] + nr_x(q_nr_x+q'+1)\\&=n[2q_x(q_xn+q_nr_x+q'+1) + q_x(2q_nr_x+2q'+1) + r_x(q_nr_x+q'+1)]\\
+\end{align*}
+Il exitste donc un ordonnancement sans-envie et Pareto-optimal.
+\end{proof}
+\begin{prop}
+Si $r_nr_x=2mq'$, il existe un ordonnancement sans-envie et Pareto-optimal ssi on n'a pas $n$ pair et $x$ impair.
+\end{prop}
+\begin{proof}
+$nx = 4m^2q_nq_x+2mq_nr_x+2mq_xr_n+r_nr_x=m(2q_xn+2q_nr_x+2q')$\\
+\begin{align*}
+\sum C_i &= m(2q_xn+2q_nr_x+2q'+1)(q_xn+q_nr_x+q')\\
+&= n[2q_x(q_xn+q_nr_x+q')+q_x(2q_nr_x+2q'+1)] + (2mq_nr_x+2mq'+m)(q_nr_x+q')\\
+&= n[2q_x(q_xn+q_nr_x+q')+q_x(2q_nr_x+2q'+1)] + (2mq_nr_x+r_nr_x+m)(q_nr_x+q')\\
+&= n[2q_x(q_xn+q_nr_x+q')+q_x(2q_nr_x+2q'+1)] + (nr_x+m)(q_nr_x+q')\\
+&= n[2q_x(q_xn+q_nr_x+q')+q_x(2q_nr_x+2q'+1)+r_x(q_nr_x+q')] + mq_nr_x+q'\\
+&= n[2q_x(q_xn+q_nr_x+q')+q_x(2q_nr_x+2q'+1)+r_x(q_nr_x+q')] + \dfrac{nr_x}{2}\\
+\end{align*}
+Si $r_x$ est pair, $\sum C_i = = n[2q_x(q_xn+q_nr_x+q')+q_x(2q_nr_x+2q'+1)+r_x(q_nr_x+q') + \dfrac{r_x}{2}]$.
+Si $r_x$ est pair alors $x$ est pair.
+Si $x$ est pair, il existe un ordonnancement sans-envie et Pareto-optimal.\\
+Si $r_x$ est impair, alors $x$ est impair. Comme $nx$ est pair, $n$ est pair.\\
+$r_x = 2p+1$\\
+$\sum C_i = n[2q_x(q_xn+q_nr_x+q')+q_x(2q_nr_x+2q'+1)+r_x(q_nr_x+q') +p] + \dfrac{n}{2}$\\
+Il n'existe donc pas d'ordonnancement sans-envie et Pareto-optimal.
+\end{proof}
 
 \section{Algorithme}
 \subsection{Round-Robin}
@@ -422,6 +467,37 @@ L’ordonnancement obtenu est sans-envie up to one slot :
 
 \begin{prop}
 Cet algorithme est sans-envie up to one slot si les coûts sont positifs et que les agents considèrent soit le coût maximal, soit la somme des coûts.
+\end{prop}
+
+\begin{proof}
+Soit $p$ un ordre sur les agents. Soient $i, j \in \{1, \dots, n\}$. On note $s_i^t$ le slot alloué à l'agent $i$ au tour $t$, pour $t\in\{1,\dots,x\}$. On note $\sigma$ l'ordonnancement obtenu avec l'algorithme présenté dans cette partie.\\
+\textbf{Cas 1 : $i<j$}\\
+A chaque tour, $p(i)$ choisi le slot libre le moins coûteux pour lui avant $p(j)$ :\\
+ $\forall t\in \{1, \dots, x\}, f_{p(i)}(s^t_{p(i)})\leq f_{p(i)}(s^t_{p(j)})$\\
+ Si $i$ considère le coût maximal : $f_{p(i)}(\sigma(i)) = \max\limits_{t = 1}^x f_{p(i)}(s^t_{p(i)}) \leq f_{p(i)}(\sigma(j)) = \max\limits_{t = 1}^x f_{p(i)}(s^t_{p(j)})$\\
+ Si $i$ considère la somme des coûts : $f_{p(i)}(\sigma(i)) = \sum\limits_{t = 1}^x f_{p(i)}(s^t_{p(i)})\leq f_{p(i)}(\sigma(j)) = \sum\limits_{t = 1}^x f_{p(i)}(s^t_{p(j)})$\\
+\textbf{Cas 2 : $i>j$}\\
+Soit $t\in\{1,\dots,x-1\}$.\\
+Le slot alloué à $p(i)$ au tour $t$ lui coûte moins que le slot alloué à $p(j)$ au tour $t+1$ : \\
+$f_{p(i)}(s^t_{p(i)})\leq f_{p(i)}(s^{t+1}_{p(j)})$\\
+Si $i$ considère le coût maximal : \\
+$f_{p(i)}(\sigma(i)\backslash\{s_{p(i)}^x\}) = \max\limits_{t = 1}^{x-1} f_{p(i)}(s^t_{p(i)}) = f_{p(i)}(s^{x-1}_{p(i)}) \leq f_{p(i)}(s^x_{p(j)}) = \max\limits_{t = 1}^{x} f_{p(i)}(s^t_{p(j)}) = f_{p(i)}(\sigma(j))$\\
+Si $i$ considère la somme des coûts : \\
+$f_{p(i)}(\sigma(i)\backslash\{s_{p(i)}^x\}) = \sum\limits_{t = 1}^{x-1} f_{p(i)}(s^t_{p(i)}) \leq \sum\limits_{t = 2}^{x} f_{p(i)}(s^t_{p(j)}) \leq \sum\limits_{t = 1}^{x} f_{p(i)}(s^t_{p(j)}) = f_{p(i)}(\sigma(j))$.
+\end{proof}
+
+\subsubsection{Round-Robin 2eme version}
+\noindent
+On considère que tous les agents ont au moins deux tâches.\\
+L'algorithme fonctionne de la façon suivante :
+\begin{itemize}
+	\item Chaque agent attribut un vecteur coût aux différents slots.
+	\item On définit un ordre $p$ des agents.
+	\item A chaque tour, chaque agent choisit le slot qui lui coûte le moins.
+\end{itemize}
+
+\begin{prop}
+Cet algorithme est sans-envie up to one slot si tous les vecteurs coûts sont comparables soit le coût maximal, soit la somme des coûts.
 \end{prop}
 
 \begin{proof}
