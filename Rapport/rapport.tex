@@ -120,11 +120,11 @@ Le but de ce stage est d'appliquer des concepts et techniques développés en th
 On note $m$ le nombre de machines.\\\\
 On note $s_i^j$ le slot de temps $i$ de la machine $j$.\\\\
 $\lbrace 1,\dots , n \rbrace$ un ensemble d'agents.\\\\
-Chaque agent $k$ a un ensemble de $x \in \mathbb{N}$ tâches à réaliser et un critère $f_k$ à minimiser.\\\\
-On note $J_i^k$ la tâche $i$ de l'agent $k$.\\\\
+Chaque agent $k$ a un ensemble de $x \in \mathbb{N}$ tâches à réaliser et un critère $f_k$ à minimiser. On note $f_k(s, J)$ le coût du slot pour la tâche $J$ et pour l'agent $k$.\\\\
+On note $J_i^k$ la tâche $i$ de l'agent $k$. On note $J^k$ l'ensemble des tâches de l'agent $k$.\\\\
 Chaque tâche $J_i^k$ a une durée $p_i^k$, peut avoir une deadline $d_i^k$ et une date de disponibilité $r_i^k$.\\\\
 Dans un premier temps, on considère que $\forall k \in \lbrace 1, \dots , n \rbrace, \forall i \in \lbrace 1, \dots , x \rbrace, p_i^k = 1$.\\\\
-Un ordonnancement $\sigma$ est définit par les dates de début des tâches : $\sigma(J_i^k)$. On note $\mathscr{S}$ l'ensemble des ordonnancements valides. On note $\sigma(k)$ l'ordonnancement de l'agent $k$ pour l'ordonnancement $\sigma$.\\\\
+Un ordonnancement $\sigma$ est définit par les dates de début des tâches : $\sigma(J_i^k)$. On note $\mathscr{S}$ l'ensemble des ordonnancements valides. On note $\sigma(k)$ l'ordonnancement de l'agent $k$ pour l'ordonnancement $\sigma$. On note $\sigma(J^k)$ l'ordonnancement des tâches de $J^k$ pour l'ordonnancement $\sigma$.\\\\
 On note $C_i^k$ la date de fin de la tâche $i$ de l'agent $k$ : $C_i^k = \sigma(J_i^k) + p_i^k$.\\\\
 $C_{max}^k = \max\limits_i C_i^k$ : date de fin maximum (makespan)\\\\
 $T_i^k = \max(0, C_i^k - d_i^k)$ : retard\\\\
@@ -172,7 +172,8 @@ degré d'envie : $e_i = \max\limits_j e_{ij}$ ou $e_i = \sum\limits_j e_{ij}$\\\
 envie de la société : $\max\limits_i e_i$ ou $\sum\limits_i e_i$\\\\
 Envie up to one slot : $i$ envie $j$ up to one slot ssi $\exists s\in \sigma(i), f_i(\sigma(i)\backslash s)\leq f_i(\sigma(j))$\\\\
 Envie up to any slot : $i$ envie $j$ up to any slot ssi $\forall s\in \sigma(i), f_i(\sigma(i)\backslash s)\leq f_i(\sigma(j))$\\\\
-
+Envie up to one job : $i$ envie $j$ up to one job ssi $\exists J\in J^i, f_i(\sigma(J^i\backslash J))\leq f_i(\sigma(j))$\\\\
+Envie up to any job : $i$ envie $j$ up to any job ssi $\forall J\in J^i, f_i(\sigma(J^i\backslash J))\leq f_i(\sigma(j))$\\\\
 
 \section{Propriétés}
 \begin{prop}
@@ -319,7 +320,7 @@ f_D(\sigma_2(D)) = 8 < f_D(\sigma_1(D)) = 9
 \end{prop}
 \begin{proof}
 \begin{figure}[H]
-\includegraphics[scale = 0.3]{somme_opt.jpg}
+\includegraphics[scale = 0.6]{somme_opt.jpg}
 \end{figure}
 L'ordonnancement de la figure précédente est optimal et contient $mq+r = nx$ slots. De plus la somme des dates de fins de cet ordonnancement vaut : $m\sum\limits_{i=1}^q i +r(q+1)$.
 \end{proof}
@@ -359,6 +360,17 @@ Si $r_x$ est impair, alors $x$ est impair. Comme $nx$ est pair, $n$ est pair.\\
 $r_x = 2p+1$\\
 $\sum C_i = n[2q_x(q_xn+q_nr_x+q')+q_x(2q_nr_x+2q'+1)+r_x(q_nr_x+q') +p] + \dfrac{n}{2}$\\
 Il n'existe donc pas d'ordonnancement sans-envie et Pareto-optimal.
+\end{proof}
+
+\begin{prop}
+Il existe un ensemble de slots tels qu'il peut exister un ordonnancement qui permet à chaque agent d'avoir un coût de $\lceil\frac{\sum C_i}{n}\rceil$.
+\end{prop}
+\begin{proof}
+On pose $nx = mq+r$ et $\sum C_i = nq_1+r_1$. Si $\sum C_i$ n'est pas multiple de $n$ i.e. $r_1 \neq 0$ : on décale le dernier slot de $n-r_1$\\
+\begin{itemize}
+\item $r = 0$ : $\sum C_i + (q+n-r_1)-q = nq_1 + r_1 + n - r_1 = n(q_1 + 1) = n\lceil\frac{\sum C_i}{n}\rceil$
+\item $r \neq 0$ : $\sum C_i + (q+1+n-r_1)-(q+1) = nq_1 + r_1 + n - r_1 = n(q_1 + 1) = n\lceil\frac{\sum C_i}{n}\rceil$
+\end{itemize}
 \end{proof}
 
 \section{Algorithme}
@@ -456,9 +468,9 @@ Tour 3 :
     \ganttbar{$B_3$}{7}{8} 
 \end{ganttchart}\\
 
-L’ordonnancement obtenu est sans-envie up to one slot : 
+L’ordonnancement obtenu est sans-envie up to one job : 
 \begin{itemize}
-\item Agent $A$ : $f_A(\sigma(A)) = 6$, $f_A(\sigma(B)) = 4$ et $f_A(\sigma(D)) = 4$. Mais si on lui retire $s_5^1$  : $f_A(\sigma(A)\backslash\{s_5^1\}) = 2$.
+\item Agent $A$ : $f_A(\sigma(A)) = 6$, $f_A(\sigma(B)) = 4$ et $f_A(\sigma(D)) = 4$. Mais si on lui retire $A_3$  : $f_A(\sigma(\{A_1,A_2\})) = 2$.
 \item Agent $B$ : $f_B(\sigma(B)) = 1$, $f_B(\sigma(A)) = 5$ et $f_B(\sigma(D)) = 1$.
 \item Agent $D$ : $f_D(\sigma(D)) = 7$, $f_D(\sigma(A)) = 11$ et $f_D(\sigma(B)) = 7$.
 \end{itemize}
@@ -466,24 +478,24 @@ L’ordonnancement obtenu est sans-envie up to one slot :
 \end{exemple}
 
 \begin{prop}
-Cet algorithme est sans-envie up to one slot si les coûts sont positifs et que les agents considèrent soit le coût maximal, soit la somme des coûts.
+Cet algorithme est sans-envie up to one job si les coûts sont positifs et que les agents considèrent soit le coût maximal, soit la somme des coûts.
 \end{prop}
 
 \begin{proof}
-Soit $p$ un ordre sur les agents. Soient $i, j \in \{1, \dots, n\}$. On note $s_i^t$ le slot alloué à l'agent $i$ au tour $t$, pour $t\in\{1,\dots,x\}$. On note $\sigma$ l'ordonnancement obtenu avec l'algorithme présenté dans cette partie.\\
+Soit $p$ un ordre sur les agents. Soient $i, j \in \{1, \dots, n\}$. On note $s_i^t$ le slot alloué à l'agent $i$ au tour $t$ et $J^i_t$ la tâche associée, pour $t\in\{1,\dots,x\}$. On note $\sigma$ l'ordonnancement obtenu avec l'algorithme présenté dans cette partie.\\
 \textbf{Cas 1 : $i<j$}\\
 A chaque tour, $p(i)$ choisi le slot libre le moins coûteux pour lui avant $p(j)$ :\\
- $\forall t\in \{1, \dots, x\}, f_{p(i)}(s^t_{p(i)})\leq f_{p(i)}(s^t_{p(j)})$\\
- Si $i$ considère le coût maximal : $f_{p(i)}(\sigma(i)) = \max\limits_{t = 1}^x f_{p(i)}(s^t_{p(i)}) \leq f_{p(i)}(\sigma(j)) = \max\limits_{t = 1}^x f_{p(i)}(s^t_{p(j)})$\\
- Si $i$ considère la somme des coûts : $f_{p(i)}(\sigma(i)) = \sum\limits_{t = 1}^x f_{p(i)}(s^t_{p(i)})\leq f_{p(i)}(\sigma(j)) = \sum\limits_{t = 1}^x f_{p(i)}(s^t_{p(j)})$\\
+ $\forall t\in \{1, \dots, x\}, f_{p(i)}(s^t_{p(i)}, J^t_{p(i)})\leq f_{p(i)}(s^t_{p(j)}, J^t_{p(i)})$\\
+ Si $i$ considère le coût maximal : $f_{p(i)}(\sigma(i)) = \max\limits_{t = 1}^x f_{p(i)}(s^t_{p(i)}, J^t_{p(i)}) \leq f_{p(i)}(\sigma(j)) = \max\limits_{t = 1}^x f_{p(i)}(s^t_{p(j)}, J^t_{p(i)})$\\
+ Si $i$ considère la somme des coûts : $f_{p(i)}(\sigma(i)) = \sum\limits_{t = 1}^x f_{p(i)}(s^t_{p(i)}, J^t_{p(i)})\leq f_{p(i)}(\sigma(j)) = \sum\limits_{t = 1}^x f_{p(i)}(s^t_{p(j)}, J^t_{p(i)})$\\
 \textbf{Cas 2 : $i>j$}\\
 Soit $t\in\{1,\dots,x-1\}$.\\
 Le slot alloué à $p(i)$ au tour $t$ lui coûte moins que le slot alloué à $p(j)$ au tour $t+1$ : \\
-$f_{p(i)}(s^t_{p(i)})\leq f_{p(i)}(s^{t+1}_{p(j)})$\\
+$f_{p(i)}(s^t_{p(i)}, J^t_{p(i)})\leq f_{p(i)}(s^{t+1}_{p(j)}, J^{t+1}_{p(i)})$\\
 Si $i$ considère le coût maximal : \\
-$f_{p(i)}(\sigma(i)\backslash\{s_{p(i)}^x\}) = \max\limits_{t = 1}^{x-1} f_{p(i)}(s^t_{p(i)}) = f_{p(i)}(s^{x-1}_{p(i)}) \leq f_{p(i)}(s^x_{p(j)}) = \max\limits_{t = 1}^{x} f_{p(i)}(s^t_{p(j)}) = f_{p(i)}(\sigma(j))$\\
+$f_{p(i)}(\sigma(J^{p(i)}\backslash\{J_{p(i)}^x\})) = \max\limits_{t = 1}^{x-1} f_{p(i)}(s^t_{p(i)}, J^t_{p(i)}) = f_{p(i)}(s^{x-1}_{p(i)}, J^{x-1}_{p(i)}) \leq f_{p(i)}(s^x_{p(j)}, J^x_{p(i)}) = f_{p(i)}(\sigma(j))$\\
 Si $i$ considère la somme des coûts : \\
-$f_{p(i)}(\sigma(i)\backslash\{s_{p(i)}^x\}) = \sum\limits_{t = 1}^{x-1} f_{p(i)}(s^t_{p(i)}) \leq \sum\limits_{t = 2}^{x} f_{p(i)}(s^t_{p(j)}) \leq \sum\limits_{t = 1}^{x} f_{p(i)}(s^t_{p(j)}) = f_{p(i)}(\sigma(j))$.
+$f_{p(i)}(\sigma(J^{p(i)}\backslash\{J_{p(i)}^x\})) = \sum\limits_{t = 1}^{x-1} f_{p(i)}(s^t_{p(i)}, J^t_{p(i)}) \leq \sum\limits_{t = 2}^{x} f_{p(i)}(s^t_{p(j)}, J^t_{p(i)}) \leq \sum\limits_{t = 1}^{x} f_{p(i)}(s^t_{p(j)}, J^t_{p(i)}) = f_{p(i)}(\sigma(j))$.
 \end{proof}
 
 \subsubsection{Round-Robin 2eme version}
@@ -497,24 +509,24 @@ L'algorithme fonctionne de la façon suivante :
 \end{itemize}
 
 \begin{prop}
-Cet algorithme est sans-envie up to one slot si tous les vecteurs coûts sont comparables soit le coût maximal, soit la somme des coûts.
+Cet algorithme est sans-envie up to one job si tous les vecteurs coûts sont comparables soit le coût maximal, soit la somme des coûts.
 \end{prop}
 
 \begin{proof}
-Soit $p$ un ordre sur les agents. Soient $i, j \in \{1, \dots, n\}$. On note $s_i^t$ le slot alloué à l'agent $i$ au tour $t$, pour $t\in\{1,\dots,x\}$. On note $\sigma$ l'ordonnancement obtenu avec l'algorithme présenté dans cette partie.\\
+Soit $p$ un ordre sur les agents. Soient $i, j \in \{1, \dots, n\}$. On note $s_i^t$ le slot alloué à l'agent $i$ au tour $t$ et $J^i_t$ la tâche associée, pour $t\in\{1,\dots,x\}$. On note $\sigma$ l'ordonnancement obtenu avec l'algorithme présenté dans cette partie.\\
 \textbf{Cas 1 : $i<j$}\\
 A chaque tour, $p(i)$ choisi le slot libre le moins coûteux pour lui avant $p(j)$ :\\
- $\forall t\in \{1, \dots, x\}, f_{p(i)}(s^t_{p(i)})\leq f_{p(i)}(s^t_{p(j)})$\\
- Si $i$ considère le coût maximal : $f_{p(i)}(\sigma(i)) = \max\limits_{t = 1}^x f_{p(i)}(s^t_{p(i)}) \leq f_{p(i)}(\sigma(j)) = \max\limits_{t = 1}^x f_{p(i)}(s^t_{p(j)})$\\
- Si $i$ considère la somme des coûts : $f_{p(i)}(\sigma(i)) = \sum\limits_{t = 1}^x f_{p(i)}(s^t_{p(i)})\leq f_{p(i)}(\sigma(j)) = \sum\limits_{t = 1}^x f_{p(i)}(s^t_{p(j)})$\\
+ $\forall t\in \{1, \dots, x\}, f_{p(i)}(s^t_{p(i)}, J^t_{p(i)})\leq f_{p(i)}(s^t_{p(j)}, J^t_{p(i)})$\\
+ Si $i$ considère le coût maximal : $f_{p(i)}(\sigma(i)) = \max\limits_{t = 1}^x f_{p(i)}(s^t_{p(i)}, J^t_{p(i)}) \leq f_{p(i)}(\sigma(j)) = \max\limits_{t = 1}^x f_{p(i)}(s^t_{p(j)}, J^t_{p(i)})$\\
+ Si $i$ considère la somme des coûts : $f_{p(i)}(\sigma(i)) = \sum\limits_{t = 1}^x f_{p(i)}(s^t_{p(i)}, J^t_{p(i)})\leq f_{p(i)}(\sigma(j)) = \sum\limits_{t = 1}^x f_{p(i)}(s^t_{p(j)}, J^t_{p(i)})$\\
 \textbf{Cas 2 : $i>j$}\\
 Soit $t\in\{1,\dots,x-1\}$.\\
 Le slot alloué à $p(i)$ au tour $t$ lui coûte moins que le slot alloué à $p(j)$ au tour $t+1$ : \\
-$f_{p(i)}(s^t_{p(i)})\leq f_{p(i)}(s^{t+1}_{p(j)})$\\
+$f_{p(i)}(s^t_{p(i)}, J^t_{p(i)})\leq f_{p(i)}(s^{t+1}_{p(j)}, J^{t+1}_{p(i)})$\\
 Si $i$ considère le coût maximal : \\
-$f_{p(i)}(\sigma(i)\backslash\{s_{p(i)}^x\}) = \max\limits_{t = 1}^{x-1} f_{p(i)}(s^t_{p(i)}) = f_{p(i)}(s^{x-1}_{p(i)}) \leq f_{p(i)}(s^x_{p(j)}) = \max\limits_{t = 1}^{x} f_{p(i)}(s^t_{p(j)}) = f_{p(i)}(\sigma(j))$\\
+$f_{p(i)}(\sigma(J^{p(i)}\backslash\{J_{p(i)}^x\})) = \max\limits_{t = 1}^{x-1} f_{p(i)}(s^t_{p(i)}, J^t_{p(i)}) = f_{p(i)}(s^{x-1}_{p(i)}, J^{x-1}_{p(i)}) \leq f_{p(i)}(s^x_{p(j)}, J^x_{p(i)}) = f_{p(i)}(\sigma(j))$\\
 Si $i$ considère la somme des coûts : \\
-$f_{p(i)}(\sigma(i)\backslash\{s_{p(i)}^x\}) = \sum\limits_{t = 1}^{x-1} f_{p(i)}(s^t_{p(i)}) \leq \sum\limits_{t = 2}^{x} f_{p(i)}(s^t_{p(j)}) \leq \sum\limits_{t = 1}^{x} f_{p(i)}(s^t_{p(j)}) = f_{p(i)}(\sigma(j))$.
+$f_{p(i)}(\sigma(J^{p(i)}\backslash\{J_{p(i)}^x\})) = \sum\limits_{t = 1}^{x-1} f_{p(i)}(s^t_{p(i)}, J^t_{p(i)}) \leq \sum\limits_{t = 2}^{x} f_{p(i)}(s^t_{p(j)}, J^t_{p(i)}) \leq \sum\limits_{t = 1}^{x} f_{p(i)}(s^t_{p(j)}, J^t_{p(i)}) = f_{p(i)}(\sigma(j))$.
 \end{proof}
 
 \subsection{Ordonnancement sans-envi quand $m = 1$ et que tous les agents veulent minimiser $\sum C_i$}
