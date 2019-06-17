@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7000 64-bit) (preloaded format=pdflatex 2019.4.16)  3 JUN 2019 22:18
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7000 64-bit) (preloaded format=pdflatex 2019.4.16)  17 JUN 2019 22:14
 entering extended mode
 **./rapport.tex
 (rapport.tex
@@ -1195,67 +1195,69 @@ Underfull \hbox (badness 10000) in paragraph at lines 240--249
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 272--297
+Underfull \hbox (badness 10000) in paragraph at lines 272--317
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 272--317
 
  []
 
 [4]
-Underfull \hbox (badness 10000) in paragraph at lines 298--318
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 298--318
-
- []
-
 <somme_opt.jpg, id=103, 722.7pt x 542.025pt>
 File: somme_opt.jpg Graphic file (type jpg)
 <use somme_opt.jpg>
 Package pdftex.def Info: somme_opt.jpg  used on input line 323.
 (pdftex.def)             Requested size: 433.62334pt x 325.2175pt.
+ [5 <./somme_opt.jpg>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 327.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\sum@' on input line 327.
+(hyperref)                removing `math shift' on input line 339.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\slimits@' on input line 327.
+(hyperref)                removing `\sum@' on input line 339.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `subscript' on input line 327.
+(hyperref)                removing `\slimits@' on input line 339.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 327.
+(hyperref)                removing `subscript' on input line 339.
 
-[5 <./somme_opt.jpg>]
-Underfull \hbox (badness 10000) in paragraph at lines 334--335
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 339.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 346--347
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 347--348
+Underfull \hbox (badness 10000) in paragraph at lines 359--360
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 369--370
+Underfull \hbox (badness 10000) in paragraph at lines 381--382
 
  []
 
-[6] [7]
-Underfull \hbox (badness 10000) in paragraph at lines 469--470
+[6]
+Underfull \hbox (badness 10000) in paragraph at lines 388--390
+
+ []
+
+[7] [8]
+Underfull \hbox (badness 10000) in paragraph at lines 501--502
 
  []
 
 
-Overfull \hbox (3.60246pt too wide) in paragraph at lines 485--499
+Overfull \hbox (3.60246pt too wide) in paragraph at lines 548--562
 \T1/cmr/m/n/12 Si $\OML/cmm/m/it/12 i$ \T1/cmr/m/n/12 consi-dère le coût maxi-m
 al : $\OML/cmm/m/it/12 f[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 \OT1/cmr/m/n/12 (\
 OML/cmm/m/it/12 i\OT1/cmr/m/n/12 )) = [] \OML/cmm/m/it/12 f[]\OT1/cmr/m/n/12 (\
@@ -1266,7 +1268,7 @@ r/m/n/12 )) = [] \OML/cmm/m/it/12 f[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 s[]; J[]
  []
 
 
-Overfull \hbox (3.26067pt too wide) in paragraph at lines 485--499
+Overfull \hbox (3.26067pt too wide) in paragraph at lines 548--562
 \T1/cmr/m/n/12 Si $\OML/cmm/m/it/12 i$ \T1/cmr/m/n/12 consi-dère la somme des c
 oûts : $\OML/cmm/m/it/12 f[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 \OT1/cmr/m/n/12 
 (\OML/cmm/m/it/12 i\OT1/cmr/m/n/12 )) = [] \OML/cmm/m/it/12 f[]\OT1/cmr/m/n/12 
@@ -1277,7 +1279,7 @@ cmr/m/n/12 )) = [] \OML/cmm/m/it/12 f[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 s[]; J
  []
 
 
-Overfull \hbox (0.2599pt too wide) in paragraph at lines 485--499
+Overfull \hbox (0.2599pt too wide) in paragraph at lines 548--562
 \OML/cmm/m/it/12 f[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 \OT1/cmr/m/n/12 (\OML/cm
 m/m/it/12 J[]\OMS/cmsy/m/n/12 nf\OML/cmm/m/it/12 J[]\OMS/cmsy/m/n/12 g\OT1/cmr/
 m/n/12 )) = [] \OML/cmm/m/it/12 f[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 s[]; J[]\O
@@ -1286,127 +1288,114 @@ T1/cmr/m/n/12 ) \OMS/cmsy/m/n/12  [] \OML/cmm/m/it/12 f[]\OT1/cmr/m/n/12 (\OML
 []\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 s[]; J[]\OT1/cmr/m/n/12 ) = \OML/cmm/m/it/1
 2 f[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 \OT1/cmr/m/n/12 (\OML/cmm/m/it/12 j\OT1
 /cmr/m/n/12 ))$\T1/cmr/m/n/12 .
- []
-
-[8]
-Overfull \hbox (3.60246pt too wide) in paragraph at lines 516--530
-\T1/cmr/m/n/12 Si $\OML/cmm/m/it/12 i$ \T1/cmr/m/n/12 consi-dère le coût maxi-m
-al : $\OML/cmm/m/it/12 f[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 \OT1/cmr/m/n/12 (\
-OML/cmm/m/it/12 i\OT1/cmr/m/n/12 )) = [] \OML/cmm/m/it/12 f[]\OT1/cmr/m/n/12 (\
-OML/cmm/m/it/12 s[]; J[]\OT1/cmr/m/n/12 ) \OMS/cmsy/m/n/12  \OML/cmm/m/it/12 f
-[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 \OT1/cmr/m/n/12 (\OML/cmm/m/it/12 j\OT1/cm
-r/m/n/12 )) = [] \OML/cmm/m/it/12 f[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 s[]; J[]
-\OT1/cmr/m/n/12 )$ 
- []
-
-
-Overfull \hbox (3.26067pt too wide) in paragraph at lines 516--530
-\T1/cmr/m/n/12 Si $\OML/cmm/m/it/12 i$ \T1/cmr/m/n/12 consi-dère la somme des c
-oûts : $\OML/cmm/m/it/12 f[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 \OT1/cmr/m/n/12 
-(\OML/cmm/m/it/12 i\OT1/cmr/m/n/12 )) = [] \OML/cmm/m/it/12 f[]\OT1/cmr/m/n/12 
-(\OML/cmm/m/it/12 s[]; J[]\OT1/cmr/m/n/12 ) \OMS/cmsy/m/n/12  \OML/cmm/m/it/12
- f[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 \OT1/cmr/m/n/12 (\OML/cmm/m/it/12 j\OT1/
-cmr/m/n/12 )) = [] \OML/cmm/m/it/12 f[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 s[]; J
-[]\OT1/cmr/m/n/12 )$ 
- []
-
-
-Overfull \hbox (0.2599pt too wide) in paragraph at lines 516--530
-\OML/cmm/m/it/12 f[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 \OT1/cmr/m/n/12 (\OML/cm
-m/m/it/12 J[]\OMS/cmsy/m/n/12 nf\OML/cmm/m/it/12 J[]\OMS/cmsy/m/n/12 g\OT1/cmr/
-m/n/12 )) = [] \OML/cmm/m/it/12 f[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 s[]; J[]\O
-T1/cmr/m/n/12 ) \OMS/cmsy/m/n/12  [] \OML/cmm/m/it/12 f[]\OT1/cmr/m/n/12 (\OML
-/cmm/m/it/12 s[]; J[]\OT1/cmr/m/n/12 ) \OMS/cmsy/m/n/12  [] \OML/cmm/m/it/12 f
-[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 s[]; J[]\OT1/cmr/m/n/12 ) = \OML/cmm/m/it/1
-2 f[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 \OT1/cmr/m/n/12 (\OML/cmm/m/it/12 j\OT1
-/cmr/m/n/12 ))$\T1/cmr/m/n/12 .
- []
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 532.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 532.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 532.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\sum@' on input line 532.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\slimits@' on input line 532.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `subscript' on input line 532.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 532.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 533--535
-
  []
 
 [9]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 584.
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 564.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 564.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 564.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\sum@' on input line 564.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\slimits@' on input line 564.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `subscript' on input line 564.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 564.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 565--567
+
+ []
+
+[10]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 616.
 
  ("C:\Users\mario\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\omscmr.fd"
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 584.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 616.
 
-Overfull \hbox (10.2914pt too wide) in paragraph at lines 623--631
+Overfull \hbox (10.2914pt too wide) in paragraph at lines 655--663
 [] 
  []
 
 
-Overfull \hbox (16.3609pt too wide) in paragraph at lines 631--639
+Overfull \hbox (16.3609pt too wide) in paragraph at lines 663--671
 [] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 631--639
+Underfull \hbox (badness 10000) in paragraph at lines 663--671
 
  []
 
-[10] [11]
-Overfull \hbox (18.85927pt too wide) in paragraph at lines 683--708
+[11]
+Overfull \hbox (18.85927pt too wide) in paragraph at lines 715--740
 [] 
  []
 
 [12]
-Underfull \hbox (badness 10000) in paragraph at lines 733--741
+Underfull \hbox (badness 10000) in paragraph at lines 764--772
 
  []
 
-[13] [14]
+[13]
+Overfull \hbox (18.85927pt too wide) in paragraph at lines 824--850
+[] 
+ []
+
+[14]
+Overfull \hbox (13.55447pt too wide) in paragraph at lines 866--874
+[] 
+ []
+
+
+Overfull \hbox (16.55547pt too wide) in paragraph at lines 874--882
+[] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 874--882
+
+ []
+
+[15] [16]
 No file rapport.bbl.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 778.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 778.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 919.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 919.
 (rapport.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 778.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 778.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 919.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 919.
 Package rerunfilecheck Info: File `rapport.out' has not changed.
 (rerunfilecheck)             Checksum: F1EEF4F66143CE1D57D21BAE41D8B4AC;726.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 778.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 919.
  ) 
 Here is how much of TeX's memory you used:
- 22996 strings out of 492945
- 433880 string characters out of 3126252
- 729749 words of memory out of 3000000
- 26437 multiletter control sequences out of 15000+200000
+ 23017 strings out of 492945
+ 434231 string characters out of 3126252
+ 732749 words of memory out of 3000000
+ 26451 multiletter control sequences out of 15000+200000
  20192 words of font info for 60 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 62i,9n,67p,932b,938s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 62i,10n,67p,932b,938s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users\mario\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\
 ecti1200.pk> <C:\Users\mario\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/
 ec/dpi600\ecrm1200.pk> <C:\Users\mario\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour
@@ -1433,9 +1422,9 @@ AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/
 Users/mario/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/symbo
 ls/msbm10.pfb><C:/Users/mario/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/pub
 lic/rsfs/rsfs10.pfb>
-Output written on rapport.pdf (16 pages, 323280 bytes).
+Output written on rapport.pdf (18 pages, 334728 bytes).
 PDF statistics:
- 473 PDF objects out of 1000 (max. 8388607)
- 43 named destinations out of 1000 (max. 500000)
+ 488 PDF objects out of 1000 (max. 8388607)
+ 50 named destinations out of 1000 (max. 500000)
  103 words of extra memory for PDF output out of 10000 (max. 10000000)
 

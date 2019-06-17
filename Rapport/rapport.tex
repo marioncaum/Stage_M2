@@ -294,7 +294,6 @@ On appelle $\sigma_2$ l'ordonnancement suivant :
     \ganttbar{$A_2$}{5}{6} 
     \ganttbar{$A_3$}{7}{8} 
 \end{ganttchart}\\
-
 $\sigma_1$ est sans-envie mais n'est pas optimal. En effet, \\\\
 $\left\{\begin{array}{l}
 f_A(\sigma_1(A)) = 9 \leq f_A(\sigma_1(B)) = 9\\
@@ -316,6 +315,7 @@ f_D(\sigma_2(D)) = 8 < f_D(\sigma_1(D)) = 9
 \end{array}
 \right.$.
 \end{exemple}
+
 \begin{prop}Si $nx = mq+r$, $\sum C_i = m\sum\limits_{i=1}^q i +r(q+1)$
 \end{prop}
 \begin{proof}
@@ -324,6 +324,18 @@ f_D(\sigma_2(D)) = 8 < f_D(\sigma_1(D)) = 9
 \end{figure}
 L'ordonnancement de la figure précédente est optimal et contient $mq+r = nx$ slots. De plus la somme des dates de fins de cet ordonnancement vaut : $m\sum\limits_{i=1}^q i +r(q+1)$.
 \end{proof}
+
+\begin{prop}
+Si $n\leq m$, il existe toujours un ordonnancement sans-envie.
+\end{prop}
+\begin{proof}
+Il suffit d'affecter une machine à chaque agents.
+\end{proof}
+
+\begin{prop}
+Si $n > m$, il n'existe pas d'ordonnancement sans-envie si tous les agents veulent minimiser le makespan.
+\end{prop}
+
 \subsection{Ordonnancement sans-envi quand tous les agents veulent minimiser $\sum C_i$}
 \noindent
 On pose : $n = 2mq_n+r_n$ et $x = 2mq_x+r_x$.
@@ -363,7 +375,7 @@ Il n'existe donc pas d'ordonnancement sans-envie et Pareto-optimal.
 \end{proof}
 
 \begin{prop}
-Il existe un ensemble de slots tels qu'il peut exister un ordonnancement qui permet à chaque agent d'avoir un coût de $\lceil\frac{\sum C_i}{n}\rceil$.
+Il existe un ensemble de slots tel qu'il peut exister un ordonnancement qui permet à chaque agent d'avoir un coût de $\lceil\frac{\sum C_i}{n}\rceil$. Cet ensemble de slots est obtenu en décalant le dernier slot de l'ensemble optimal d'au plus $n-1$ pas de temps.
 \end{prop}
 \begin{proof}
 On pose $nx = mq+r$ et $\sum C_i = nq_1+r_1$. Si $\sum C_i$ n'est pas multiple de $n$ i.e. $r_1 \neq 0$ : on décale le dernier slot de $n-r_1$\\
@@ -372,6 +384,26 @@ On pose $nx = mq+r$ et $\sum C_i = nq_1+r_1$. Si $\sum C_i$ n'est pas multiple d
 \item $r \neq 0$ : $\sum C_i + (q+1+n-r_1)-(q+1) = nq_1 + r_1 + n - r_1 = n(q_1 + 1) = n\lceil\frac{\sum C_i}{n}\rceil$
 \end{itemize}
 \end{proof}
+\begin{exemple}
+On considère un ensmble de $m$ machines et $n=m+1$ agents. Soit $k\in \mathbb{N}^*$. Chaque agent a $x = 2mk+1$ tâches à exécuter.\\
+$nx = 2mkn + m + 1 = m(2kn+1)+1$\\
+\begin{align*}
+\sum C_i &= m \sum\limits_{i=1}^{2kn+1} i + 2kn +2 \\
+&= m(2kn+1)(kn+1) + 2kn +2 \\
+&= m(2k^2n^2+2kn+kn+1) + 2kn +2 \\
+&= n(2k^2nm+3km+2k)+m+2 \\
+&= n(2k^2nm+3km+2k+1)+1 \\
+\end{align*}
+Si on décale le dernier slot de $n-1$ pas de temps on obtient:
+\begin{align*}
+\sum C_i -(2kn+2)+(2kn+2+n-1)&= m \sum\limits_{i=1}^{2kn+1} i + 2kn +2 +n-1 \\
+&= m(2kn+1)(kn+1) + 2kn +2 +n-1 \\
+&= m(2k^2n^2+2kn+kn+1) + 2kn +2+n-1 \\
+&= n(2k^2nm+3km+2k+1)+m+2-1 \\
+&= n(2k^2nm+3km+2k+2) \\
+\end{align*}
+Ce qui fait exactement $n\lceil\frac{\sum C_i}{n}\rceil$
+\end{exemple}
 
 \section{Algorithme}
 \subsection{Round-Robin}
@@ -485,17 +517,17 @@ Cet algorithme est sans-envie up to one job si les coûts sont positifs et que l
 Soit $p$ un ordre sur les agents. Soient $i, j \in \{1, \dots, n\}$. On note $s_i^t$ le slot alloué à l'agent $i$ au tour $t$ et $J^i_t$ la tâche associée, pour $t\in\{1,\dots,x\}$. On note $\sigma$ l'ordonnancement obtenu avec l'algorithme présenté dans cette partie.\\
 \textbf{Cas 1 : $i<j$}\\
 A chaque tour, $p(i)$ choisi le slot libre le moins coûteux pour lui avant $p(j)$ :\\
- $\forall t\in \{1, \dots, x\}, f_{p(i)}(s^t_{p(i)}, J^t_{p(i)})\leq f_{p(i)}(s^t_{p(j)}, J^t_{p(i)})$\\
- Si $i$ considère le coût maximal : $f_{p(i)}(\sigma(i)) = \max\limits_{t = 1}^x f_{p(i)}(s^t_{p(i)}, J^t_{p(i)}) \leq f_{p(i)}(\sigma(j)) = \max\limits_{t = 1}^x f_{p(i)}(s^t_{p(j)}, J^t_{p(i)})$\\
- Si $i$ considère la somme des coûts : $f_{p(i)}(\sigma(i)) = \sum\limits_{t = 1}^x f_{p(i)}(s^t_{p(i)}, J^t_{p(i)})\leq f_{p(i)}(\sigma(j)) = \sum\limits_{t = 1}^x f_{p(i)}(s^t_{p(j)}, J^t_{p(i)})$\\
+ $\forall t\in \{1, \dots, x\}, f_{p(i)}(s^t_{p(i)})\leq f_{p(i)}(s^t_{p(j)})$\\
+ Si $i$ considère le coût maximal : $f_{p(i)}(\sigma(i)) = \max\limits_{t = 1}^x f_{p(i)}(s^t_{p(i)}) \leq f_{p(i)}(\sigma(j)) = \max\limits_{t = 1}^x f_{p(i)}(s^t_{p(j)})$\\
+ Si $i$ considère la somme des coûts : $f_{p(i)}(\sigma(i)) = \sum\limits_{t = 1}^x f_{p(i)}(s^t_{p(i)})\leq f_{p(i)}(\sigma(j)) = \sum\limits_{t = 1}^x f_{p(i)}(s^t_{p(j)})$\\
 \textbf{Cas 2 : $i>j$}\\
 Soit $t\in\{1,\dots,x-1\}$.\\
 Le slot alloué à $p(i)$ au tour $t$ lui coûte moins que le slot alloué à $p(j)$ au tour $t+1$ : \\
-$f_{p(i)}(s^t_{p(i)}, J^t_{p(i)})\leq f_{p(i)}(s^{t+1}_{p(j)}, J^{t+1}_{p(i)})$\\
+$f_{p(i)}(s^t_{p(i)})\leq f_{p(i)}(s^{t+1}_{p(j)})$\\
 Si $i$ considère le coût maximal : \\
-$f_{p(i)}(\sigma(J^{p(i)}\backslash\{J_{p(i)}^x\})) = \max\limits_{t = 1}^{x-1} f_{p(i)}(s^t_{p(i)}, J^t_{p(i)}) = f_{p(i)}(s^{x-1}_{p(i)}, J^{x-1}_{p(i)}) \leq f_{p(i)}(s^x_{p(j)}, J^x_{p(i)}) = f_{p(i)}(\sigma(j))$\\
+$f_{p(i)}(\sigma(J^{p(i)}\backslash\{J_{p(i)}^x\})) = \max\limits_{t = 1}^{x-1} f_{p(i)}(s^t_{p(i)}) = f_{p(i)}(s^{x-1}_{p(i)}) \leq f_{p(i)}(s^x_{p(j)}) = f_{p(i)}(\sigma(j))$\\
 Si $i$ considère la somme des coûts : \\
-$f_{p(i)}(\sigma(J^{p(i)}\backslash\{J_{p(i)}^x\})) = \sum\limits_{t = 1}^{x-1} f_{p(i)}(s^t_{p(i)}, J^t_{p(i)}) \leq \sum\limits_{t = 2}^{x} f_{p(i)}(s^t_{p(j)}, J^t_{p(i)}) \leq \sum\limits_{t = 1}^{x} f_{p(i)}(s^t_{p(j)}, J^t_{p(i)}) = f_{p(i)}(\sigma(j))$.
+$f_{p(i)}(\sigma(J^{p(i)}\backslash\{J_{p(i)}^x\})) = \sum\limits_{t = 1}^{x-1} f_{p(i)}(s^t_{p(i)}) \leq \sum\limits_{t = 2}^{x} f_{p(i)}(s^t_{p(j)}) \leq \sum\limits_{t = 1}^{x} f_{p(i)}(s^t_{p(j)}) = f_{p(i)}(\sigma(j))$.
 \end{proof}
 
 \subsubsection{Round-Robin 2eme version}
@@ -721,7 +753,6 @@ $1\leq 2i-1\leq n-1$ & & $2\leq 2i - n\leq n$\\
 ensemble des entiers impairs entre 1 et $n$ & & ensemble des entiers pairs entre 1 et $n$
 \end{tabular}\\
 Entre 1 et $n$, tous les slot sont alloués exactement une fois.
-\newpage
 \item[•] pour les slots $\{n+1,\dots,2n\}$ :\\
 \begin{tabular}{ccc}
 $1\leq i \leq \dfrac{n}{2}$ & & $\dfrac{n+2}{2}\leq i \leq n$\\
@@ -766,6 +797,116 @@ Le coût total de l'agent $a_i$ est donc :
 &= \dfrac{9n+4}{2} + (x-3)(\dfrac{3n+3}{2}+n\dfrac{x}{2})\\
 &= x\dfrac{3n+3}{2} +nx\dfrac{x}{2}-\dfrac{5}{2}-3n\dfrac{x}{2}\\
 &= \dfrac{x}{2}(nx+3)-\dfrac{5}{2}
+\end{align*}
+Cet ordonnancement est donc sans-envie.
+\end{proof}
+Cet ordonnancement est sans-envie mais la somme totale des dates de fins est supérieure à $n\lceil\frac{\sum C_i}{n}\rceil$.\\
+$\sum C_i = \sum\limits_{i=1}^{nx} i = \dfrac{nx(nx + 1)}{2} = \dfrac{n^2}{2}x^2 + \dfrac{n}{2}x = \dfrac{n^2}{2}x^2 + \dfrac{x-1}{2}n + \dfrac{n}{2} = n(\dfrac{n}{2}x^2 + \dfrac{x-1}{2}) + \dfrac{n}{2}$.\\
+Donc $n\lceil\frac{\sum C_i}{n}\rceil = \frac{n}{2}x^2 + \frac{x+1}{2}$.\\
+On cosidère l'ordonnancement suivant :\\
+On répète la séquence suivante $\dfrac{x-3}{2}$ fois :
+\begin{ganttchart}[inline]{1}{12}
+    \ganttbar{$a_1$}{1}{2}
+    \ganttbar{$\dots$}{3}{4} 
+    \ganttbar{$a_n$}{5}{6} 
+    \ganttbar{$a_n$}{7}{8} 
+    \ganttbar{$\dots$}{9}{10}
+    \ganttbar{$a_1$}{11}{12} 
+\end{ganttchart}\\
+On décale le dernier slot de $\dfrac{n}{2}$ pas de temps.\\
+Pour les $3n$ derniers slots on considère l'allocation suivante :
+\begin{itemize}
+\item[•] pour $i\in \{1,\dots,\dfrac{n}{2} \}$ on alloue à $a_i$ les slots $2i + n(x-3)$, $\dfrac{3n + 4}{2} - i + n(x-3)$,\\ et $3n-i + n(x-3)$.
+\item[•] pour $i\in \{\dfrac{n+2}{2}\dots,n-1 \}$ on alloue à $a_i$ les slots $2i -n+1 + n(x-3)$, $\dfrac{5n+2}{2} + n(x-3)$, et $3n-i + n(x-3)$.
+\item[•] on alloue à l'agent $a_n$ les slots $1+n(x-3)$, $n+1+n(x-3)$ et $3n + \dfrac{n}{2} +n(x-3)$.
+\end{itemize}
+\begin{exemple}
+$n=4$ et $x=5$. On note les agents $a$, $b$, $c$ et $d$.\\
+\begin{ganttchart}[inline]{1}{34}
+    \ganttbar{$a$}{1}{2}
+    \ganttbar{$b$}{3}{4} 
+    \ganttbar{$c$}{5}{6} 
+    \ganttbar{$d$}{7}{8} 
+    \ganttbar{$d$}{9}{10}
+    \ganttbar{$c$}{11}{12} 
+    \ganttbar{$b$}{13}{14}
+    \ganttbar{$a$}{15}{16} 
+    \ganttbar{$a$}{17}{18} 
+    \ganttbar{$b$}{19}{20} 
+    \ganttbar{$d$}{21}{22}
+    \ganttbar{$c$}{23}{24} 
+    \ganttbar{$a$}{25}{26}
+    \ganttbar{$c$}{27}{28} 
+    \ganttbar{$b$}{29}{30}
+    \ganttbar{$d$}{31}{32} 
+    \ganttbar{$d$}{33}{34}\\
+    \ganttbar{$c$}{1}{2} 
+    \ganttbar{$b$}{3}{4} 
+    \ganttbar{}{5}{6} 
+    \ganttbar{}{7}{8} 
+    \ganttbar{$a$}{9}{10} 
+\end{ganttchart}\\
+Chaque agent a un coût de 53. Cet ordonnancement est sans-envi.
+\end{exemple}
+\begin{prop}
+L'ordonnancement est valide et sans-envi.
+\end{prop}
+\begin{proof}
+Soit $i\in\{1,\dots,n\}$.\\
+Montrons que l'allocation des $3n$ derniers slots est valide (aucun slot n'est alloué deux fois et tous les slots sont alloués). Pour simplifier l'écriture on omet le terme $n(x-3)$.
+\begin{itemize}
+\item[•] pour les slots $\{1,\dots,n\}$ :\\
+\begin{tabular}{ccc}
+$1\leq i \leq \dfrac{n}{2}$ & & $\dfrac{n+2}{2}\leq i \leq n-1$\\
+$2\leq 2i \leq n$ & & $n+2\leq 2i\leq 2n-2$\\
+                  & & $3\leq 2i - n + 1\leq n-1$\\
+ensemble des entiers pairs entre 2 et $n$ & & ensemble des entiers impairs entre 2 et $n$
+\end{tabular}\\
+Entre 1 et $n$, tous les slot sont alloués exactement une fois.
+\item[•] pour les slots $\{n+1,\dots,2n\}$ :\\
+\begin{tabular}{ccc}
+$1\leq i \leq \dfrac{n}{2}$ & & $\dfrac{n+2}{2}\leq i \leq n-1$\\
+$-\dfrac{n}{2}\leq -i\leq -1$ & & $-n+1\leq -i \leq -\dfrac{n+2}{2}$\\
+$n+2 \leq \dfrac{3n+4}{2}-i\leq\dfrac{3n+2}{2}$ & & $\dfrac{3n+4}{2}\leq \dfrac{5n+2}{2}-i\leq 2n$\\
+ensemble des entiers entre $n+2$ et $\dfrac{3n+2}{2}$ & & ensemble des entiers entre $\dfrac{3n+4}{2}$ et $2n$. 
+\end{tabular}\\
+Entre $n+1$ et $2n$, tous les slot sont alloués exactement une fois.
+\item[•] pour les slots $\{2n+1,\dots,3n + 1\}$ :\\
+\begin{tabular}{ccc}
+$1\leq i \leq \dfrac{n}{2}$ & & $\dfrac{n+2}{2}\leq i \leq n-1$\\
+$-\dfrac{n}{2}\leq -i\leq -1$ & & $-n+1\leq -i \leq -\dfrac{n+2}{2}$\\
+$\dfrac{5n}{2}\leq 3n-i\leq 3n-1$ & & $2n+1\leq 3n-i \leq \dfrac{5n-2}{2}$\\
+ensemble des entiers entre $\dfrac{5n}{2}$ et $3n-1$ & & ensemble des entiers entre $2n + 1$ et $\dfrac{5n-2}{2}$
+\end{tabular}\\
+Entre $2n+1$ et $3n-1$, tous les slot sont alloués exactement une fois. Le slot $3n + \dfrac{n}{2}$ est alloué exactement une fois.\\
+\end{itemize}
+Cette ordonnancement est donc valide. Montrons maintenant que l'ordonnancement est sans-envi. Déterminons dans un premier temps le coût total des slots :\\
+$(\sum\limits_{i=1}^{nx}i)-nx+nx+\dfrac{n}{2} = \dfrac{(nx+1)(nx)}{2}+\dfrac{n}{2} = n(\dfrac{n}{2}x^2+\dfrac{x+1}{2})$\\
+Pour que l'ordonnancement soit sans-envi, le coût de chaque agent doit être $\dfrac{n}{2}x^2+\dfrac{x+1}{2}$.\\
+Calculons le coût de l'agent $a_i$ pour les $3n$ derniers slots :
+\begin{itemize}
+\item[•] si $i\in \{1,\dots,\dfrac{n}{2}\}$, le coût pour l'agent $a_i$ si on ne considère que les $3n$ derniers slots est : \\
+$2i + n(x-3) + \dfrac{3n+4}{2} - i + n(x-3) = 3n - i + n(x-3) = 3nx - \dfrac{9n}{2} + 2$
+\item[•] si $i\in \{\dfrac{n+1}{2},\dots,n\}$, le coût pour l'agent $a_i$ si on ne considère que les $3n$ derniers slots est : \\
+$2i - n + 1 + n(x-3) + \dfrac{5n+2}{2} - i + n(x-3) + 3n - i + n(x-3) = 3nx - \dfrac{9n}{2} + 2$
+\item[•] si $i = n$, le coût pour l'agent $a_i$ si on ne considère que les $3n$ derniers slots est :\\
+$1 + n(x-3) + n + 1 + n(x-3) + 3n + \dfrac{n}{2} + n(x-3) = 3nx - \dfrac{9n}{2} + 2$
+\end{itemize}
+A l'itération $j$ de la séquence 
+\begin{ganttchart}[inline]{1}{12}
+    \ganttbar{$a_1$}{1}{2}
+    \ganttbar{$\dots$}{3}{4} 
+    \ganttbar{$a_n$}{5}{6} 
+    \ganttbar{$a_n$}{7}{8} 
+    \ganttbar{$\dots$}{9}{10}
+    \ganttbar{$a_1$}{11}{12} 
+\end{ganttchart} , le coût de l'agent $a_i$ est :\\
+$2n(j-1) + i + 2n(j-1) + 2n+1 -i = 4nj-2n+1$.\\
+Le coût total de l'agent $a_i$ est donc :
+\begin{align*}
+3nx - \dfrac{9n}{2} + 2+\sum\limits_{j=1}^{\frac{x-3}{2}}(4nj-2n+1) &= 3nx - \dfrac{9n}{2} + 2 + 4n\dfrac{\frac{x-3}{2}(\frac{x-3}{2}+1)}{2} - 2n\dfrac{x-3}{2} + \dfrac{x-3}{2}\\
+&= 3nx - \dfrac{9n}{2} + n(x-3)\frac{x-1}{2} - n(x-3) + \dfrac{x+1}{2}\\
+&= \dfrac{n}{2}x^2 + \dfrac{x+1}{2}
 \end{align*}
 Cet ordonnancement est donc sans-envie.
 \end{proof}
