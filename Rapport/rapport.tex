@@ -413,7 +413,8 @@ L'algorithme fonctionne de la façon suivante :
 \begin{itemize}
 	\item Chaque agent donne pour chacune de ses tâches un coût aux différents slots.
 	\item On définit un ordre $p$ des agents.
-	\item A chaque tour, chaque agent choisit le slot qui lui coûte le moins.
+	\item A chaque tour, chaque agent choisit le slot qui possède le coût le moins élevé (pour les tâches qui ne sont pas affectées) et y affecte la tâche pour laquelle le coût est minimal (parmi les tâches qui ne sont pas encore affectées). 
+	\item L'ordre des tâches est immuable.
 \end{itemize}
 
 \begin{exemple}
@@ -537,8 +538,101 @@ L'algorithme fonctionne de la façon suivante :
 \begin{itemize}
 	\item Chaque agent attribut un vecteur coût aux différents slots.
 	\item On définit un ordre $p$ des agents.
-	\item A chaque tour, chaque agent choisit le slot qui lui coûte le moins.
+	\item A chaque tour, chaque agent choisit, parmi les slots non Pareto-dominé, le slot qui possède le coût minimal (pour les tâches qui ne sont pas encore affectées) et y affecte la tâche pour laquelle le coût est minimal (parmi les tâches qui ne sont pas encore affectées).
+	\item Quand tous les slots sont affectés, les agents réorganise leur tâche de manière à avoir un coût minimal.
 \end{itemize}
+
+\begin{exemple}
+On considère une instance avec une machine et trois agents $A$, $B$, et $D$. Les agents $A$ et $B$ veulent minimiser $\sum C_i$ et l'agent $D$ veut minimiser $\sum S_i$. Chaque agent a trois tâches à executer. On note $A_i$ (resp. $B_i$ et $D_i$) la tâche $i$ de l'agent $A$ (reps. $B$ et $D$) pour $i\in \{1, 2, 3\}$. Chaque tâche a une deadline : $d_1^D = 1$, $d_2^D = 1$ et $d_3^D = 9$. On considère l'ordre suivant : $ABD$. 
+Le tableau des coûts est le suivant :
+
+\begin{table}[H]
+    \begin{tabular}{|c||c|c|c|c|c||c|c|c|c|}
+        \hline
+        & $s_1$ & $s_2$ & $s_3$ & $s_4$ & $s_5$ & $s_6$ & $s_7$ & $s_8$ & $s_9$ \\
+        \hline 
+        $A_1$ & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 \\
+        $A_2$ & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 \\
+        $A_3$ & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 \\
+        \hline
+        $B_1$ & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 \\
+        $B_2$ & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 \\
+        $B_3$ & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 \\
+        \hline
+        $D_1$ & 0 & 1 & 4 & 9 & 16 & 25 & 36 & 49 & 64 \\
+        $D_2$ & 0 & 1 & 4 & 9 & 16 & 25 & 36 & 49 & 64 \\
+        $D_3$ & 64 & 49 & 36 & 25 & 16 & 9 & 4 & 1 & 0 \\
+        \hline
+    \end{tabular}
+\end{table}
+Le vecteur coût associé à chaque slot correspond à la colonne (dans les lignes de l'agent) du tableau ci-dessus. Par exemple, pour l'agent $A$, le vecteur associé au slot $s_3$ est $(3, 3, 3)$
+Tour 1 : 
+\begin{itemize}
+\item Agent $A$ : le seul slot non Pareto-dominé est $s_1$. Il choisit donc d'affecter $A_1$ au slot $s_1$.
+\item Agent $B$ : le seul slot non Pareto-dominé est $s_2$. Il choisit donc d'affecter $B_1$ au slot $s_2$.
+\item Agent $D$ : tous les slots sont non Pareto-dominés. Il choisit donc d'affecter $D_3$ au slot $s_9$.
+\end{itemize}
+\begin{ganttchart}[inline]{1}{18}
+    \ganttbar{$A_1$}{1}{2} 
+    \ganttbar{$B_1$}{3}{4} 
+    \ganttbar{}{5}{6}
+    \ganttbar{}{7}{8} 
+    \ganttbar{}{9}{10}
+    \ganttbar{}{11}{12} 
+    \ganttbar{}{13}{14} 
+    \ganttbar{}{15}{16} 
+    \ganttbar{$D_3$}{17}{18} 
+\end{ganttchart}\\
+\noindent
+Tour 2 :
+\begin{itemize}
+\item Agent $A$ : le seul slot non Pareto-dominé est $s_3$. Il choisit donc d'affecter $A_2$ au slot $s_3$.
+\item Agent $B$ : le seul slot non Pareto-dominé est $s_4$. Il choisit donc d'affecter $B_2$ au slot $s_4$.
+\item Agent $D$ : tous les slots sont non Pareto-dominés. Il choisit donc d'affecter $D_1$ au slot $s_5$.
+\end{itemize}
+\begin{ganttchart}[inline]{1}{18}
+    \ganttbar{$A_1$}{1}{2} 
+    \ganttbar{$B_1$}{3}{4} 
+    \ganttbar{$A_2$}{5}{6}
+    \ganttbar{$B_2$}{7}{8} 
+    \ganttbar{$D_1$}{9}{10}
+    \ganttbar{}{11}{12} 
+    \ganttbar{}{13}{14} 
+    \ganttbar{}{15}{16} 
+    \ganttbar{$D_3$}{17}{18} 
+\end{ganttchart}\\
+\noindent
+Tour 3 :
+\begin{itemize}
+\item Agent $A$ : le seul slot non Pareto-dominé est $s_6$. Il choisit donc d'affecter $A_3$ au slot $s_6$.
+\item Agent $B$ : le seul slot non Pareto-dominé est $s_7$. Il choisit donc d'affecter $B_3$ au slot $s_7$.
+\item Agent $D$ : le seul slot restant est le slot $s_8$. Il choisit donc d'affecter $D_2$ au slot $s_8$.
+\end{itemize}
+\begin{ganttchart}[inline]{1}{18}
+    \ganttbar{$A_1$}{1}{2} 
+    \ganttbar{$B_1$}{3}{4} 
+    \ganttbar{$A_2$}{5}{6}
+    \ganttbar{$B_2$}{7}{8} 
+    \ganttbar{$D_1$}{9}{10}
+    \ganttbar{$A_3$}{11}{12} 
+    \ganttbar{$B_3$}{13}{14} 
+    \ganttbar{$D_2$}{15}{16} 
+    \ganttbar{$D_3$}{17}{18} 
+\end{ganttchart}\\
+Les agents réorganisent leurs tâches de manière à obtenir un coût minimal.\\
+\begin{ganttchart}[inline]{1}{18}
+    \ganttbar{$A_1$}{1}{2} 
+    \ganttbar{$B_1$}{3}{4} 
+    \ganttbar{$A_2$}{5}{6}
+    \ganttbar{$B_2$}{7}{8} 
+    \ganttbar{$D_1$}{9}{10}
+    \ganttbar{$A_3$}{11}{12} 
+    \ganttbar{$B_3$}{13}{14} 
+    \ganttbar{$D_2$}{15}{16} 
+    \ganttbar{$D_3$}{17}{18} 
+\end{ganttchart}\\
+Le coût de l'agent $A$ est 10. Le coût de l'agent $B$ est 13. Le coût de l'agent $C$ est 65. S'il avait les slots de l'agent $A$, le coût de l'agent $C$ serait de 13. S'il avait les slots de l'agent $B$, le coût de l'agent $C$ serait de 14. Si on retire la tâche $C_1$ a l'agent $C$, son coût est de 16. Si on retire la tâche $C_2$ a l'agent $C$, son coût est de 16. Si on retire la tâche $C_3$ a l'agent $C$, son coût est de 65. Cet ordonnancement n'est donc pas sans-envie up to one job.
+\end{exemple}
 
 \begin{prop}
 Cet algorithme est sans-envie up to one job si tous les vecteurs coûts sont comparables soit le coût maximal, soit la somme des coûts.
@@ -802,7 +896,7 @@ Cet ordonnancement est donc sans-envie.
 \end{proof}
 Cet ordonnancement est sans-envie mais la somme totale des dates de fins est supérieure à $n\lceil\frac{\sum C_i}{n}\rceil$.\\
 $\sum C_i = \sum\limits_{i=1}^{nx} i = \dfrac{nx(nx + 1)}{2} = \dfrac{n^2}{2}x^2 + \dfrac{n}{2}x = \dfrac{n^2}{2}x^2 + \dfrac{x-1}{2}n + \dfrac{n}{2} = n(\dfrac{n}{2}x^2 + \dfrac{x-1}{2}) + \dfrac{n}{2}$.\\
-Donc $n\lceil\frac{\sum C_i}{n}\rceil = \frac{n}{2}x^2 + \frac{x+1}{2}$.\\
+Donc $\lceil\frac{\sum C_i}{n}\rceil = \frac{n}{2}x^2 + \frac{x+1}{2}$.\\
 On cosidère l'ordonnancement suivant :\\
 On répète la séquence suivante $\dfrac{x-3}{2}$ fois :
 \begin{ganttchart}[inline]{1}{12}
@@ -906,7 +1000,8 @@ Le coût total de l'agent $a_i$ est donc :
 \begin{align*}
 3nx - \dfrac{9n}{2} + 2+\sum\limits_{j=1}^{\frac{x-3}{2}}(4nj-2n+1) &= 3nx - \dfrac{9n}{2} + 2 + 4n\dfrac{\frac{x-3}{2}(\frac{x-3}{2}+1)}{2} - 2n\dfrac{x-3}{2} + \dfrac{x-3}{2}\\
 &= 3nx - \dfrac{9n}{2} + n(x-3)\frac{x-1}{2} - n(x-3) + \dfrac{x+1}{2}\\
-&= \dfrac{n}{2}x^2 + \dfrac{x+1}{2}
+&= \dfrac{n}{2}x^2 + \dfrac{x+1}{2}\\
+&= \lceil\frac{\sum C_i}{n}\rceil
 \end{align*}
 Cet ordonnancement est donc sans-envie.
 \end{proof}
