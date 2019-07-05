@@ -515,20 +515,21 @@ Cet algorithme est sans-envie up to one job si les coûts sont positifs et que l
 \end{prop}
 
 \begin{proof}
-Soit $p$ un ordre sur les agents. Soient $i, j \in \{1, \dots, n\}$. On note $s_i^t$ le slot alloué à l'agent $i$ au tour $t$ et $J^i_t$ la tâche associée, pour $t\in\{1,\dots,x\}$. On note $\sigma$ l'ordonnancement obtenu avec l'algorithme présenté dans cette partie.\\
+Sans perte de généralité, on considère que l'ordre des agents correspond à leur indice. Soient $i, j \in \{1, \dots, n\}$. On note $s_i^t$ le slot alloué à l'agent $i$ au tour $t$ et $J^i_t$ la tâche associée, pour $t\in\{1,\dots,x\}$. On note $\sigma$ l'ordonnancement obtenu avec l'algorithme présenté dans cette partie.\\
 \textbf{Cas 1 : $i<j$}\\
-A chaque tour, $p(i)$ choisi le slot libre le moins coûteux pour lui avant $p(j)$ :\\
- $\forall t\in \{1, \dots, x\}, f_{p(i)}(s^t_{p(i)})\leq f_{p(i)}(s^t_{p(j)})$\\
- Si $i$ considère le coût maximal : $f_{p(i)}(\sigma(i)) = \max\limits_{t = 1}^x f_{p(i)}(s^t_{p(i)}) \leq f_{p(i)}(\sigma(j)) = \max\limits_{t = 1}^x f_{p(i)}(s^t_{p(j)})$\\
- Si $i$ considère la somme des coûts : $f_{p(i)}(\sigma(i)) = \sum\limits_{t = 1}^x f_{p(i)}(s^t_{p(i)})\leq f_{p(i)}(\sigma(j)) = \sum\limits_{t = 1}^x f_{p(i)}(s^t_{p(j)})$\\
+A chaque tour, $i$ choisi le slot libre le moins coûteux pour lui avant $j$ :\\
+ $\forall t\in \{1, \dots, x\}, f_{i}(s^t_{i})\leq f_{i}(s^t_{j})$\\
+ Si $i$ considère le coût maximal : $f_{i}(\sigma(i)) = \max\limits_{t = 1}^x f_{i}(s^t_{i}) \leq f_{i}(\sigma(j)) = \max\limits_{t = 1}^x f_{i}(s^t_{j})$\\
+ Si $i$ considère la somme des coûts : $f_{i}(\sigma(i)) = \sum\limits_{t = 1}^x f_{i}(s^t_{i})\leq f_{i}(\sigma(j)) = \sum\limits_{t = 1}^x f_{i}(s^t_{j})$\\
 \textbf{Cas 2 : $i>j$}\\
 Soit $t\in\{1,\dots,x-1\}$.\\
-Le slot alloué à $p(i)$ au tour $t$ lui coûte moins que le slot alloué à $p(j)$ au tour $t+1$ : \\
-$f_{p(i)}(s^t_{p(i)})\leq f_{p(i)}(s^{t+1}_{p(j)})$\\
+Le slot alloué à $i$ au tour $t$ lui coûte moins que le slot alloué à $j$ au tour $t+1$ : \\
+$f_{i}(s^t_{i})\leq f_{i}(s^{t+1}_{j})$\\
+On enlève donc à $i$ sa dernière tâche :\\
 Si $i$ considère le coût maximal : \\
-$f_{p(i)}(\sigma(J^{p(i)}\backslash\{J_{p(i)}^x\})) = \max\limits_{t = 1}^{x-1} f_{p(i)}(s^t_{p(i)}) = f_{p(i)}(s^{x-1}_{p(i)}) \leq f_{p(i)}(s^x_{p(j)}) = f_{p(i)}(\sigma(j))$\\
+$f_{i}(\sigma(J^{i}\backslash\{J_{i}^x\})) = \max\limits_{t = 1}^{x-1} f_{i}(s^t_{i}) = f_{i}(s^{x-1}_{i}) \leq f_{i}(s^x_{j}) = f_{i}(\sigma(j))$\\
 Si $i$ considère la somme des coûts : \\
-$f_{p(i)}(\sigma(J^{p(i)}\backslash\{J_{p(i)}^x\})) = \sum\limits_{t = 1}^{x-1} f_{p(i)}(s^t_{p(i)}) \leq \sum\limits_{t = 2}^{x} f_{p(i)}(s^t_{p(j)}) \leq \sum\limits_{t = 1}^{x} f_{p(i)}(s^t_{p(j)}) = f_{p(i)}(\sigma(j))$.
+$f_{i}(\sigma(J^{i}\backslash\{J_{i}^x\})) = \sum\limits_{t = 1}^{x-1} f_{i}(s^t_{i}) \leq \sum\limits_{t = 2}^{x} f_{i}(s^t_{j}) \leq \sum\limits_{t = 1}^{x} f_{i}(s^t_{j}) = f_{i}(\sigma(j))$.
 \end{proof}
 
 \subsubsection{Round-Robin 2eme version}
@@ -639,20 +640,21 @@ Cet algorithme est sans-envie up to one job si tous les vecteurs coûts sont com
 \end{prop}
 
 \begin{proof}
-Soit $p$ un ordre sur les agents. Soient $i, j \in \{1, \dots, n\}$. On note $s_i^t$ le slot alloué à l'agent $i$ au tour $t$ et $J^i_t$ la tâche associée, pour $t\in\{1,\dots,x\}$. On note $\sigma$ l'ordonnancement obtenu avec l'algorithme présenté dans cette partie.\\
+Sans perte de généralité, on considère que l'ordre des agents correspond à leur indice. Soient $i, j \in \{1, \dots, n\}$. On note $s_i^t$ le slot alloué à l'agent $i$ au tour $t$ et $J^i_t$ la tâche associée, pour $t\in\{1,\dots,x\}$. On note $\sigma$ l'ordonnancement obtenu avec l'algorithme présenté dans cette partie.\\
 \textbf{Cas 1 : $i<j$}\\
-A chaque tour, $p(i)$ choisi le slot libre le moins coûteux pour lui avant $p(j)$ :\\
- $\forall t\in \{1, \dots, x\}, f_{p(i)}(s^t_{p(i)}, J^t_{p(i)})\leq f_{p(i)}(s^t_{p(j)}, J^t_{p(i)})$\\
- Si $i$ considère le coût maximal : $f_{p(i)}(\sigma(i)) = \max\limits_{t = 1}^x f_{p(i)}(s^t_{p(i)}, J^t_{p(i)}) \leq f_{p(i)}(\sigma(j)) = \max\limits_{t = 1}^x f_{p(i)}(s^t_{p(j)}, J^t_{p(i)})$\\
- Si $i$ considère la somme des coûts : $f_{p(i)}(\sigma(i)) = \sum\limits_{t = 1}^x f_{p(i)}(s^t_{p(i)}, J^t_{p(i)})\leq f_{p(i)}(\sigma(j)) = \sum\limits_{t = 1}^x f_{p(i)}(s^t_{p(j)}, J^t_{p(i)})$\\
+A chaque tour, $i$ choisi le slot libre le moins coûteux pour lui avant $j$ :\\
+ $\forall t\in \{1, \dots, x\}, f_{i}(s^t_{i}, J^t_{i})\leq f_{i}(s^t_{j}, J^t_{i})$\\
+ Si $i$ considère le coût maximal : $f_{i}(\sigma(i)) = \max\limits_{t = 1}^x f_{i}(s^t_{i}, J^t_{i}) \leq f_{i}(\sigma(j)) = \max\limits_{t = 1}^x f_{i}(s^t_{j}, J^t_{i})$\\
+ Si $i$ considère la somme des coûts : $f_{i}(\sigma(i)) = \sum\limits_{t = 1}^x f_{i}(s^t_{i}, J^t_{i})\leq f_{i}(\sigma(j)) = \sum\limits_{t = 1}^x f_{i}(s^t_{j}, J^t_{i})$\\
 \textbf{Cas 2 : $i>j$}\\
 Soit $t\in\{1,\dots,x-1\}$.\\
-Le slot alloué à $p(i)$ au tour $t$ lui coûte moins que le slot alloué à $p(j)$ au tour $t+1$ : \\
-$f_{p(i)}(s^t_{p(i)}, J^t_{p(i)})\leq f_{p(i)}(s^{t+1}_{p(j)}, J^{t+1}_{p(i)})$\\
+Le slot alloué à $i$ au tour $t$ lui coûte moins que le slot alloué à $j$ au tour $t+1$ : \\
+$f_{i}(s^t_{i}, J^t_{i})\leq f_{i}(s^{t+1}_{j}, J^{t+1}_{i})$\\
+On enlève donc à $i$ sa dernière tâche :\\
 Si $i$ considère le coût maximal : \\
-$f_{p(i)}(\sigma(J^{p(i)}\backslash\{J_{p(i)}^x\})) = \max\limits_{t = 1}^{x-1} f_{p(i)}(s^t_{p(i)}, J^t_{p(i)}) = f_{p(i)}(s^{x-1}_{p(i)}, J^{x-1}_{p(i)}) \leq f_{p(i)}(s^x_{p(j)}, J^x_{p(i)}) = f_{p(i)}(\sigma(j))$\\
+$f_{i}(\sigma(J^{i}\backslash\{J_{i}^x\})) = \max\limits_{t = 1}^{x-1} f_{i}(s^t_{i}, J^t_{i}) = f_{i}(s^{x-1}_{i}, J^{x-1}_{i}) \leq f_{i}(s^x_{j}, J^x_{i}) = f_{i}(\sigma(j))$\\
 Si $i$ considère la somme des coûts : \\
-$f_{p(i)}(\sigma(J^{p(i)}\backslash\{J_{p(i)}^x\})) = \sum\limits_{t = 1}^{x-1} f_{p(i)}(s^t_{p(i)}, J^t_{p(i)}) \leq \sum\limits_{t = 2}^{x} f_{p(i)}(s^t_{p(j)}, J^t_{p(i)}) \leq \sum\limits_{t = 1}^{x} f_{p(i)}(s^t_{p(j)}, J^t_{p(i)}) = f_{p(i)}(\sigma(j))$.
+$f_{i}(\sigma(J^{i}\backslash\{J_{i}^x\})) = \sum\limits_{t = 1}^{x-1} f_{i}(s^t_{i}, J^t_{i}) \leq \sum\limits_{t = 2}^{x} f_{i}(s^t_{j}, J^t_{i}) \leq \sum\limits_{t = 1}^{x} f_{i}(s^t_{j}, J^t_{i}) = f_{i}(\sigma(j))$.
 \end{proof}
 
 \subsection{Ordonnancement sans-envi quand $m = 1$ et que tous les agents veulent minimiser $\sum C_i$}
@@ -943,7 +945,7 @@ $n=4$ et $x=5$. On note les agents $a$, $b$, $c$ et $d$.\\
 Chaque agent a un coût de 53. Cet ordonnancement est sans-envi.
 \end{exemple}
 \begin{prop}
-L'ordonnancement est valide et sans-envi.
+L'ordonnancement est valide et sans-envi. De plus chaque agent a une coût de $\lceil\frac{\sum C_i}{n}\rceil$.
 \end{prop}
 \begin{proof}
 Soit $i\in\{1,\dots,n\}$.\\
@@ -1007,6 +1009,404 @@ Cet ordonnancement est donc sans-envie.
 \end{proof}
 \end{itemize}
 
+\subsection{Ordonnancement sans-envi quand $m = 2$ et que tous les agents veulent minimiser $\sum C_i$}
+
+\begin{itemize}
+\item[•] Si $n = 2p$ : on affecte $p$ agent à chaque machine et on utilise les algorithmes pour une machine sur chaque machine.
+\item[•] Si $n = 2p + 1$ et $x=2k$ : on répète la séquence suivante $k$ fois : \\
+\begin{ganttchart}[inline]{1}{14}
+    \ganttbar{$a_1$}{1}{2}
+    \ganttbar{$\dots$}{3}{4} 
+    \ganttbar{$a_p$}{5}{6} 
+    \ganttbar{$a_n$}{7}{8}
+    \ganttbar{$a_p$}{9}{10} 
+    \ganttbar{$\dots$}{11}{12}
+    \ganttbar{$a_1$}{13}{14} \\
+    \ganttbar{$a_{p+1}$}{1}{2}
+    \ganttbar{$\dots$}{3}{4} 
+    \ganttbar{$a_{2p}$}{5}{6} 
+    \ganttbar{$a_n$}{7}{8}
+    \ganttbar{$a_{p+1}$}{9}{10} 
+    \ganttbar{$\dots$}{11}{12}
+    \ganttbar{$a_{2p}$}{13}{14}
+\end{ganttchart}
+\begin{exemple}
+$n=3$ et $x=4$. On note les agents $a$, $b$ et $c$.\\
+\begin{ganttchart}[inline]{1}{12}
+    \ganttbar{$a$}{1}{2}
+    \ganttbar{$c$}{3}{4} 
+    \ganttbar{$a$}{5}{6} 
+    \ganttbar{$a$}{7}{8} 
+    \ganttbar{$c$}{9}{10}
+    \ganttbar{$a$}{11}{12}\\ 
+    \ganttbar{$b$}{1}{2}
+    \ganttbar{$c$}{3}{4} 
+    \ganttbar{$b$}{5}{6} 
+    \ganttbar{$b$}{7}{8} 
+    \ganttbar{$c$}{9}{10}
+    \ganttbar{$b$}{11}{12}
+\end{ganttchart}\\
+Chaque agent a un coût de 14. Cet ordonnancement est sans-envi.
+\end{exemple}
+\begin{prop}
+L'ordonnancement obtenu est sans-envi.
+\end{prop}
+\begin{proof}
+$nx = 2k(2p+1) = 2kn$\\
+La somme des dates de fin de tous les slots qui seront alloués est :\\$\sum C_i = 2\sum\limits_{i=1}^{kn} i = kn(kn + 1) = n(k^2n+n)$.\\
+Pour que l'ordonnancement soit sans-envi, il faut que le coût de l'ordonnancement pour chaque agent soit $k^2n +k$.\\
+Soit $i\in\{1,\dots,p\}$. A l'itération $j$ de la séquence, l'agent $a_i$ aura les slots $n(j-1) + i$ et $n(j-1) + n + 1 -i$ de la machine 1. Le coût de l'agent $a_i$ à l'itération $j$ de la séquence est donc : $2n(j-1) + n + 1$.\\
+Soit $i\in\{p+1,\dots,2p\}$. A l'itération $j$ de la séquence, l'agent $a_i$ aura les slots $n(j-1) + i - p$ et $n(j-1) + n + 1 -(i-p)$ de la machine 2. Le coût de l'agent $a_i$ à l'itération $j$ de la séquence est donc : $2n(j-1) + n + 1$.\\
+A l'itération $j$ de la séquence, l'agent $a_n$ aura les slots $n(j-1) + p+1$ de la machine 1 et $n(j-1) +p + 1$ de la machine 2. Le coût de l'agent $a_n$ à l'itération $j$ de la séquence est donc : $2n(j-1) + n + 1$.\\
+Le coût total pour chaque agent est :\\
+ $\sum\limits_{j = 1}^{k} (2n(j-1) + n + 1) = 2n\sum\limits_{j = 1}^{k} j - \sum\limits_{j = 1}^{k} 2n + \sum\limits_{j = 1}^{k} (n+1) = 2n \dfrac{k(k+1)}{2}-2nk+(n+1)k = k^2n +k$.\\
+ Cet ordonnancement est bien sans-envi.
+\end{proof}
+\item[•] Si $n = 4p + 1$ et $x=2k+1$ : $nx = (4p+1)(2k+1) = 2(kn+2p)+1$\\
+\begin{align*}
+\sum C_i &= 2\sum\limits_{j = 1}^{kn+2p} j + kn+2p+1 \\
+&= (kn+2p)(kn+2p+1) + kn + 2p + 1 \\
+&= k^2n^2 + 4knp + 2kn + np + 3p + 1 \\
+&= n(k^2n + 4kp + 2k + p) + 3p+1
+\end{align*}
+On cosidère l'ordonnancement suivant :\\
+On répète la séquence suivante $k-1$ fois :\\
+\begin{ganttchart}[inline]{1}{14}
+    \ganttbar{$a_1$}{1}{2}
+    \ganttbar{$\dots$}{3}{4} 
+    \ganttbar{$a_2p$}{5}{6} 
+    \ganttbar{$a_n$}{7}{8}
+    \ganttbar{$a_2p$}{9}{10} 
+    \ganttbar{$\dots$}{11}{12}
+    \ganttbar{$a_1$}{13}{14} \\
+    \ganttbar{$a_{2p+1}$}{1}{2}
+    \ganttbar{$\dots$}{3}{4} 
+    \ganttbar{$a_{4p}$}{5}{6} 
+    \ganttbar{$a_n$}{7}{8}
+    \ganttbar{$a_{2p+1}$}{9}{10} 
+    \ganttbar{$\dots$}{11}{12}
+    \ganttbar{$a_{4p}$}{13}{14}
+\end{ganttchart}\\
+On décale le dernier slot de la machine 1 de $p$ pas de temps.\\
+Pour les $3n$ derniers slots on considère l'allocation suivante :
+\begin{itemize}
+\item pour $i\in \{1,\dots,p \}$ on alloue à $a_i$ les slots $i + (k-1)n$, $i+n-p+ (k-1)n$, et $n+2p+2-2i+ (k-1)n$ de la machine 1.
+\item pour $i\in \{p+1,\dots,2p \}$ on alloue à $a_i$ les slots $i+1+ (k-1)n$, $i+p+1+ (k-1)n$, et $2n-2i+ (k-1)n$ de la machine 1.
+\item pour $i\in \{2p+1,\dots,3p \}$ on alloue à $a_i$ les slots $i-2p+ (k-1)n$, \\$i-2p+n-p+ (k-1)n$, et $n+2p+2-2(i-2p)+ (k-1)n$ de la machine 2.
+\item pour $i\in \{3p+1,\dots,4p \}$ on alloue à $a_i$ les slots $i-2p+1+ (k-1)n$, \\$i-2p+p+1+ (k-1)n$, et $2n-2(i-2p)+ (k-1)n$ de la machine 2.
+\item on alloue à l'agent $a_n$ les slots $n+3p+1+(k-1)n$, $p+1+ (k-1)n$ de la machine 1 et $p+1+ (k-1)n$ de la machine 2.
+\end{itemize}
+\begin{exemple}
+$n=5$ et $x=5$. On note les agents $a$, $b$, $c$, $d$ et $e$.\\
+\begin{ganttchart}[inline]{1}{28}
+    \ganttbar{$a$}{1}{2}
+    \ganttbar{$b$}{3}{4}
+    \ganttbar{$e$}{5}{6}
+    \ganttbar{$b$}{7}{8}
+    \ganttbar{$a$}{9}{10}
+    \ganttbar{$a$}{11}{12}
+    \ganttbar{$e$}{13}{14} 
+    \ganttbar{$b$}{15}{16} 
+    \ganttbar{$b$}{17}{18} 
+    \ganttbar{$a$}{19}{20}
+    \ganttbar{$b$}{21}{22} 
+    \ganttbar{$a$}{23}{24}
+    \ganttbar{}{25}{26} 
+    \ganttbar{$e$}{27}{28}\\
+    \ganttbar{$c$}{1}{2}
+    \ganttbar{$d$}{3}{4}
+    \ganttbar{$e$}{5}{6}
+    \ganttbar{$d$}{7}{8}
+    \ganttbar{$c$}{9}{10}
+    \ganttbar{$c$}{11}{12}
+    \ganttbar{$e$}{13}{14} 
+    \ganttbar{$d$}{15}{16} 
+    \ganttbar{$d$}{17}{18} 
+    \ganttbar{$c$}{19}{20}
+    \ganttbar{$d$}{21}{22} 
+    \ganttbar{$c$}{23}{24}
+\end{ganttchart}\\
+Chaque agent a un coût de 34. Cet ordonnancement est sans-envi.
+\end{exemple}
+\begin{prop}
+L'ordonnancement est valide et sans-envi.
+\end{prop}
+\begin{proof}
+Soit $i\in\{1,\dots,n\}$.\\
+Montrons que l'allocation des $3n$ derniers slots est valide (aucun slot n'est alloué deux fois et tous les slots sont alloués). Pour simplifier l'écriture on omet le terme $(k-1)n$.
+\begin{itemize}
+\item pour les slots $\{1,\dots,2p+1\}$ :\\
+\begin{tabular}{ccc}
+agents $1$ à $p$  & & agents $p+1$ à $2p$   \\
+$1\leq i \leq p $ & & $p+1\leq i \leq 2p$   \\
+				  & & $p+2\leq i+1\leq 2p+1$\\
+slots 1 à $p$     & & slots $p+2$ à $2p+1$  \\
+de la machine 1   & & de la machine 1       \\
+\hline
+agents $2p+1$ à $3p$ & & agents $3p+1$ à $4p$\\
+$2p+1\leq i \leq 3p $ & & $3p+1\leq i \leq 4p$   \\
+$1\leq i-2p \leq p $ & & $p+2\leq i-2p+1 \leq 2p+1$   \\
+slots 1 à $p$     & & slots $p+2$ à $2p+1$  \\
+de la machine 2   & & de la machine 2       \\
+\hline
+agent $n$ & &\\
+slots $p+1$ & & \\
+des machines 1 et 2&&\\
+\end{tabular}\\
+Entre 1 et $2p+1$, tous les slots des deux machines sont alloués exactement une fois.
+\item pour les slots $\{2p+2,\dots,n\}$ :\\
+\begin{tabular}{ccc}
+agents $1$ à $p$  & & agents $p+1$ à $2p$   \\
+$1\leq i \leq p $ & & $p+1\leq i \leq 2p$   \\
+$3p+2 \leq i+n-p\leq n$ & & $2p+2\leq i+p+1\leq 3p+1$\\
+slots $3p+2$ à $n$     & & slots $2p+2$ à $3p+1$  \\
+de la machine 1   & & de la machine 1       \\
+\hline
+agents $2p+1$ à $3p$ & & agents $3p+1$ à $4p$\\
+$2p+1\leq i \leq 3p $ & & $3p+1\leq i \leq 4p$   \\
+$3p+2 \leq i-2p+n-p\leq n$ & & $2p+2\leq i-2p+p+1\leq 3p+1$\\
+slots $3p+2$ à $n$     & & slots $2p+2$ à $3p+1$  \\
+de la machine 2   & & de la machine 2       \\
+\end{tabular}\\
+Entre $2p+2$ et $n$, tous les slots des deux machines sont alloués exactement une fois.
+\item pour les slots $\{n+1,\dots,n+2p\}$ :\\
+\begin{tabular}{ccc}
+agents $1$ à $p$  & & agents $p+1$ à $2p$   \\
+$1\leq i \leq p $ & & $p+1\leq i \leq 2p$   \\
+$n+2 \leq n+2p+2-2i\leq n+2p$ & & $n+1\leq 2n-2i\leq n+2p-1$\\
+slots impairs de $n+2$ à $n+2p$     & & slots pairs de $n+1$ à $n+2p-1$  \\
+de la machine 1   & & de la machine 1       \\
+\hline
+agents $2p+1$ à $3p$ & & agents $3p+1$ à $4p$\\
+$2p+1\leq i \leq 3p $ & & $3p+1\leq i \leq 4p$   \\
+$n+2 \leq n+2p+2-2(i-2p)\leq n+2p$ & & $n+1\leq 2n-2(i-2p)\leq n+2p-1$\\
+slots impairs de $n+2$ à $n+2p$     & & slots pairs de $n+1$ à $n+2p-1$  \\
+de la machine 2   & & de la machine 2       \\
+\end{tabular}\\
+Entre $n+1$ et $n+2p$, tous les slots des deux machines sont alloués exactement une fois. Le slot $n+3p+1$ de la machine 1 est alloué exactement une fois.\\
+\end{itemize}
+Cette ordonnancement est donc valide. Montrons maintenant que l'ordonnancement est sans-envie. \\
+Pour que l'ordonnancement soit sans-envi, le coût de chaque agent doit être $k^2n + 4kp + 2k + p + 1 = k^2n + nk +k+p+1$.\\
+Calculons le coût de l'agent $a_i$ pour les $3n$ derniers slots :
+\begin{itemize}
+\item pour $i\in \{1,\dots,p \}$, le coût de l'agent $a_i$ est : \\
+$i +i+n-p+n+2p+2-2i+ 3(k-1)n=3kn-n+p+2$
+\item pour $i\in \{p+1,\dots,2p \}$, le coût de l'agent $a_i$ est : \\
+$i+1+i+p+1+2n-2i+ 3(k-1)n=3kn-n+p+2$
+\item pour $i\in \{2p+1,\dots,3p \}$, le coût de l'agent $a_i$ est :\\
+$i-2p+i-2p+n-p+n+2p+2-2(i-2p)+ 3(k-1)n=3kn-n+p+2$
+\item pour $i\in \{3p+1,\dots,4p \}$, le coût de l'agent $a_i$ est :\\
+$i-2p+1+i-2p+p+1+2n-2(i-2p)+ 3(k-1)n = 3kn-n+p+2$
+\item le coût de l'agent $a_n$ est :\\
+$n+3p+1+p+1+p+1+ 3(k-1)n = 3kn-n+p+2$
+\end{itemize}
+A l'itération $j$ de la séquence 
+\begin{ganttchart}[inline]{1}{14}
+    \ganttbar{$a_1$}{1}{2}
+    \ganttbar{$\dots$}{3}{4} 
+    \ganttbar{$a_2p$}{5}{6} 
+    \ganttbar{$a_n$}{7}{8}
+    \ganttbar{$a_2p$}{9}{10} 
+    \ganttbar{$\dots$}{11}{12}
+    \ganttbar{$a_1$}{13}{14} \\
+    \ganttbar{$a_{2p+1}$}{1}{2}
+    \ganttbar{$\dots$}{3}{4} 
+    \ganttbar{$a_{4p}$}{5}{6} 
+    \ganttbar{$a_n$}{7}{8}
+    \ganttbar{$a_{2p+1}$}{9}{10} 
+    \ganttbar{$\dots$}{11}{12}
+    \ganttbar{$a_{4p}$}{13}{14}
+\end{ganttchart} , le coût de l'agent $a_i$ est :\\
+$4p+2 + 2n(j-1) = 2nj-n+1$\\
+Le coût total de l'agent $a_i$ est donc :
+\begin{align*}
+3kn-n+p+2 + \sum\limits_{j=1}^{k-1} 2nj-n+1&= 3kn-n+p+2 + 2n \sum\limits_{j=1}^{k-1} j - \sum\limits_{j=1}^{k-1} n-1\\
+&=  3kn-n+p+2 + nk(k-1)-(k-1)(n-1)\\
+&= nk^2 + nk +p+k+1
+\end{align*}
+Cet ordonnancement est donc sans-envie.
+\end{proof}
+\item[•] Si $n = 4p + 3$ et $x=2k+1$ : $nx = (4p+3)(2k+1) = 2(kn+2p+1)+1$\\
+\begin{align*}
+\sum C_i &= 2\sum\limits_{j = 1}^{kn+2p+1} j + kn+2p+1 \\
+&= (kn+2p+2)(kn+2p+1) + kn + 2p + 2 \\
+&= k^2n^2+4knp+4kn+pn+n+p+1 \\
+&= n(k^2n+4kp+4k+p+1)+p+1
+\end{align*}
+On cosidère l'ordonnancement suivant :\\
+On répète la séquence suivante $k-1$ fois :\\
+\begin{ganttchart}[inline]{1}{14}
+    \ganttbar{$a_1$}{1}{2}
+    \ganttbar{$\dots$}{3}{4} 
+    \ganttbar{$a_{2p+1}$}{5}{6} 
+    \ganttbar{$a_n$}{7}{8}
+    \ganttbar{$a_{2p+1}$}{9}{10} 
+    \ganttbar{$\dots$}{11}{12}
+    \ganttbar{$a_1$}{13}{14} \\
+    \ganttbar{$a_{2p+2}$}{1}{2}
+    \ganttbar{$\dots$}{3}{4} 
+    \ganttbar{$a_{4p+2}$}{5}{6} 
+    \ganttbar{$a_n$}{7}{8}
+    \ganttbar{$a_{2p+2}$}{9}{10} 
+    \ganttbar{$\dots$}{11}{12}
+    \ganttbar{$a_{4p+2}$}{13}{14}
+\end{ganttchart}\\
+On décale le dernier slot de la machine 1 de $3p+2$ pas de temps.\\
+Pour les $3n$ derniers slots on considère l'allocation suivante :
+\begin{itemize}
+\item pour $i\in \{1,\dots,p+1 \}$ on alloue à $a_i$ les slots $2i + (k-1)n$, $n-p+1-i+ (k-1)n$, et $2n-2p-1-i+ (k-1)n$ de la machine 1.
+\item pour $i\in \{p+2,\dots,2p+1 \}$ on alloue à $a_i$ les slots $2i-1-2p+ (k-1)n$, $n+p+2-i+ (k-1)n$, et $2n-2p-1-i+ (k-1)n$ de la machine 1.
+\item pour $i\in \{2p+2,\dots,3p+2 \}$ on alloue à $a_i$ les slots $2(i-2p-1) + (k-1)n$, \\$n-p+1-(i-2p-1)+ (k-1)n$, et $2n-2p-1-(i-2p-1)+ (k-1)n$ de la machine 2.
+\item pour $i\in \{3p+3,\dots,4p+2 \}$ on alloue à $a_i$ les slots $2(i-2p-1)-1-2p+ (k-1)n$, \\$n+p+2-(i-2p-1)+ (k-1)n$, et $2n-2p-1-(i-2p-1)+ (k-1)n$ de la machine 2.
+\item on alloue à l'agent $a_n$ les slots $2n+p+1+(k-1)n$, 1 de la machine 1 et 1 de la machine 2.
+\end{itemize}
+\begin{exemple}
+$n=3$ et $x=5$. On note les agents $a$, $b$, $c$.\\
+\begin{ganttchart}[inline]{1}{20}
+    \ganttbar{$a$}{1}{2}
+    \ganttbar{$c$}{3}{4}
+    \ganttbar{$a$}{5}{6}
+    \ganttbar{$c$}{7}{8}
+    \ganttbar{$a$}{9}{10}
+    \ganttbar{$a$}{11}{12}
+    \ganttbar{$a$}{13}{14} 
+    \ganttbar{}{15}{16} 
+    \ganttbar{}{17}{18} 
+    \ganttbar{$c$}{19}{20}\\
+    \ganttbar{$b$}{1}{2}
+    \ganttbar{$c$}{3}{4}
+    \ganttbar{$b$}{5}{6}
+    \ganttbar{$c$}{7}{8}
+    \ganttbar{$b$}{9}{10}
+    \ganttbar{$b$}{11}{12}
+    \ganttbar{$b$}{13}{14} 
+\end{ganttchart}\\
+Chaque agent a un coût de 22. Cet ordonnancement est sans-envie.
+\end{exemple}
+\begin{prop}
+L'ordonnancement est valide et sans-envie.
+\end{prop}
+\begin{proof}
+Soit $i\in\{1,\dots,n\}$.\\
+Montrons que l'allocation des $3n$ derniers slots est valide (aucun slot n'est alloué deux fois et tous les slots sont alloués). Pour simplifier l'écriture on omet le terme $(k-1)n$.
+\begin{itemize}
+\item pour les slots $\{1,\dots,2p+2\}$ :\\
+\begin{tabular}{ccc}
+agents $1$ à $p+1$  & & agents $p+2$ à $2p+1$   \\
+$1\leq i \leq p+1 $ & & $p+2\leq i \leq 2p+1$   \\
+$2\leq 2i\leq 2p+2$ & & $3\leq 2i-1-2p\leq 2p+1$\\
+slots pairs de 2 à $2p+2$     & & slots impairs $3$ à $2p+1$  \\
+de la machine 1   & & de la machine 1       \\
+\hline
+agents $2p+2$ à $3p+2$ & & agents $3p+3$ à $4p+2$\\
+$2p+2\leq i \leq 3p+2 $ & & $3p+3\leq i \leq 4p+2$   \\
+$2\leq 2(i-2p-1)\leq 2p+2$ & & $3\leq 2(i-2p-1)-1-2p\leq 2p+1$\\
+slots pairs de 2 à $2p+2$     & & slots impairs $3$ à $2p+1$  \\
+de la machine 2   & & de la machine 2       \\
+\hline
+agent $n$ & &\\
+slots $1$ & & \\
+des machines 1 et 2&&\\
+\end{tabular}\\
+Entre 1 et $2p+2$, tous les slots des deux machines sont alloués exactement une fois.
+\item pour les slots $\{2p+3,\dots,n\}$ :\\
+\begin{tabular}{ccc}
+agents $1$ à $p+1$  & & agents $p+2$ à $2p+1$   \\
+$1\leq i \leq p+1 $ & & $p+2\leq i \leq 2p+1$   \\
+$2p+3 \leq n-p+1-i\leq 3p+3$ & & $3p+4\leq n+p+2-i\leq n$\\
+slots $2p+3$ à $3p+3$     & & slots $3p+4$ à $n$  \\
+de la machine 1   & & de la machine 1       \\
+\hline
+agents $2p+2$ à $3p+2$ & & agents $3p+3$ à $4p+2$\\
+$2p+2\leq i \leq 3p+2 $ & & $3p+3\leq i \leq 4p+2$   \\
+$2p+3 \leq n-p+1-(i-2p-1)\leq 3p+3$ & & $3p+4\leq n+p+2-(i-2p-1)\leq n$\\
+slots $2p+3$ à $3p+3$     & & slots $3p+4$ à $n$  \\
+de la machine 2   & & de la machine 2       \\
+\end{tabular}\\
+Entre $2p+3$ et $n$, tous les slots des deux machines sont alloués exactement une fois.
+\item pour les slots $\{n+1,\dots,n+2p+1\}$ :\\
+\begin{tabular}{ccc}
+agents $1$ à $p+1$  & & agents $p+2$ à $2p+1$   \\
+$1\leq i \leq p+1 $ & & $p+2\leq i \leq 2p+1$   \\
+$n+p+2 \leq 2n-2p-1-i\leq n+2p+1$ & & $n+1\leq 2n-2p-1-i\leq n+p+1$\\
+slots $n+p+2$ à $n+2p+1$     & & slots $n+1$ à $n+p+1$  \\
+de la machine 1   & & de la machine 1       \\
+\hline
+agents $2p+2$ à $3p+2$ & & agents $3p+3$ à $4p+2$\\
+$2p+2\leq i \leq 3p+2 $ & & $3p+3\leq i \leq 4p+2$   \\
+$n+p+2 \leq 2n-2p-1-(i-2p-1)\leq n+2p+1$ & & $n+1\leq 2n-2p-1-(i-2p-1)\leq n+p+1$\\
+slots $n+p+2$ à $n+2p+1$     & & slots $n+1$ à $n+p+1$  \\
+de la machine 2   & & de la machine 2       \\
+\end{tabular}\\
+Entre $n+1$ et $n+2p+1$, tous les slots des deux machines sont alloués exactement une fois. Le slot $2n+p+1$ de la machine 1 est alloué exactement une fois.\\
+\end{itemize}
+Cette ordonnancement est donc valide. Montrons maintenant que l'ordonnancement est sans-envie. \\
+Pour que l'ordonnancement soit sans-envi, le coût de chaque agent doit être $k^2n+4kp+4k+p+2=k^2n+nk+k+p+2$.\\
+Calculons le coût de l'agent $a_i$ pour les $3n$ derniers slots :
+\begin{itemize}
+\item pour $i\in \{1,\dots,p+1 \}$, le coût de l'agent $a_i$ est : \\
+$2i+n-p+1-i+2n-2p-1-i+ 3(k-1)n=3kn-3p$
+\item pour $i\in \{p+2,\dots,2p+1 \}$, le coût de l'agent $a_i$ est : \\
+$2i-1-2p+n+p+2-i+2n-2p-1-i +3n(k-1) = 3kn-3p$
+\item pour $i\in \{2p+2,\dots,3p+2 \}$, le coût de l'agent $a_i$ est :\\
+$2(i-2p-1)+n-p+1-(i-2p-1)+2n-2p-1-(i-2p-1)+ 3(k-1)n=3kn-3p$
+\item pour $i\in \{3p+3,\dots,4p+2 \}$, le coût de l'agent $a_i$ est :\\
+$2(i-2p-1)-1-2p+n+p+2-(i-2p-1)+2n-2p-1-(i-2p-1) +3n(k-1) = 3kn-3p$
+\item le coût de l'agent $a_n$ est :\\
+$2+2n+p+1+3n(k-1) = 3kn-3p$
+\end{itemize}
+A l'itération $j$ de la séquence 
+\begin{ganttchart}[inline]{1}{14}
+    \ganttbar{$a_1$}{1}{2}
+    \ganttbar{$\dots$}{3}{4} 
+    \ganttbar{$a_2p$}{5}{6} 
+    \ganttbar{$a_n$}{7}{8}
+    \ganttbar{$a_2p$}{9}{10} 
+    \ganttbar{$\dots$}{11}{12}
+    \ganttbar{$a_1$}{13}{14} \\
+    \ganttbar{$a_{2p+1}$}{1}{2}
+    \ganttbar{$\dots$}{3}{4} 
+    \ganttbar{$a_{4p}$}{5}{6} 
+    \ganttbar{$a_n$}{7}{8}
+    \ganttbar{$a_{2p+1}$}{9}{10} 
+    \ganttbar{$\dots$}{11}{12}
+    \ganttbar{$a_{4p}$}{13}{14}
+\end{ganttchart} , le coût de l'agent $a_i$ est :\\
+$4p+2 + 2n(j-1) = 2nj-n+1$\\
+Le coût total de l'agent $a_i$ est donc :
+\begin{align*}
+3kn-3p+ \sum\limits_{j=1}^{k-1} 2nj-n+1&= 3kn-3p + 2n \sum\limits_{j=1}^{k-1} j - \sum\limits_{j=1}^{k-1} n-1\\
+&=  3kn-3p+2 + nk(k-1)-(k-1)(n-1)\\
+&= k^2n+nk+k+p+2
+\end{align*}
+Cet ordonnancement est donc sans-envie.
+\end{proof}
+\end{itemize}
+
+\section{Tableau récapitulatif}
+\begin{tabular}{|c||c|c|c|}
+	\hline
+	& $\sum C_i$ & Round-Robin & Round-Robin \\
+	& & sans réorganisation & avec réorganisation \\
+	\hline
+	\hline
+	$m=1$ & ordonnancement & sans-envie up to one job & sans-envie up to one job\\
+	& sans-envie et optimal & si tous les coûts sont positifs & si tous les vecteurs sont comparables \\
+	\hline
+	$m=2$ & ordonnancement & sans-envie up to one job & sans-envie up to one job\\
+	& sans-envie et optimal & si tous les coûts sont positifs & si tous les vecteurs sont comparables \\
+	\hline
+	$m>2$ & pas d'algorithme & sans-envie up to one job & sans-envie up to one job\\
+	& mais ensemble de slots & si tous les coûts sont positifs & si tous les vecteurs sont comparables \\
+	\hline
+	
+\end{tabular}
+
+\section{Articles}
+\subsection{Proportional Borda allocations}
+Dans cet article, on considère $n$ agents et $k$ biens avec $k$ un multiple de $n$. Tous les agents ont le même classement des biens. Les utilités des biens sont calculés en fonctions de leur classement : le biens le mieux classé a une utilité de $k$, le deuxième a une utilité de $k-1$...\\
+Le but de cet article est de trouver une allocation proportionnelle, c'est-à-dire une allocation qui donne la même utilité à chaque agent.\\\\
+On peut effectuer un parallèle entre cet article et notre problème. Tous les agents ont le même classement des biens et les utilités sont calculées grâce à Borda. Cela revient à une instance à une machine et où tous les agents considèrent $\sum C_i$. Trouver une allocation proportionnelle revient pour notre problème à trouver une allocation sans-envie. Les résultats de l'article confirment les résultats obtenus pour notre problème : il existe un ordonnancement sans-envie et Pareto-optimal (sans ajouter de temps de repos) si $x$ est pair, ou si $x$ et $n$ sont impairs.
 \newpage
 \bibliographystyle{unsrt}
 \bibliography{ref}

@@ -9,3 +9,7 @@
 \contentsline {subsection}{\numberline {4.1}Round-Robin}{7}{subsection.4.1}% 
 \contentsline {subsubsection}{\numberline {4.1.1}Round-Robin 2eme version}{9}{subsubsection.4.1.1}% 
 \contentsline {subsection}{\numberline {4.2}Ordonnancement sans-envi quand $m = 1$ et que tous les agents veulent minimiser $\DOTSB \sum@ \slimits@ C_i$}{11}{subsection.4.2}% 
+\contentsline {subsection}{\numberline {4.3}Ordonnancement sans-envi quand $m = 2$ et que tous les agents veulent minimiser $\DOTSB \sum@ \slimits@ C_i$}{17}{subsection.4.3}% 
+\contentsline {section}{\numberline {5}Tableau r\IeC {\'e}capitulatif}{23}{section.5}% 
+\contentsline {section}{\numberline {6}Articles}{23}{section.6}% 
+\contentsline {subsection}{\numberline {6.1}Proportional Borda allocations}{23}{subsection.6.1}% 
