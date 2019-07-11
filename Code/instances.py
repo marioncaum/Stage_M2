@@ -18,7 +18,8 @@ class Instance(object):
 			for J in a.get_jobs():
 				slot = J.get_slot()
 				sigma[slot[0]-1][slot[1]-1] = a.get_nom()+J.get_nom()
-		print(sigma)
+		for s in range(self.m):
+			print("Machine", s+1, ":", sigma[s])
 		return
 
 	def ordo_1_machine_x_pair(self):
@@ -27,7 +28,7 @@ class Instance(object):
 			for j in range(0, int(self.x/2)):
 				jobs[2*j].set_slot([1,2*self.n*j+(i+1)])
 				jobs[2*j+1].set_slot([1, 2*self.n*j+2*self.n+1-(i+1)])
-				self.agents[i].add_cout(2*self.n*j+(i+1)+2*self.n*j+2*self.n+1-(i+1))
+				self.agents[i].calcul_cout(2*self.n*j+(i+1)+2*self.n*j+2*self.n+1-(i+1))
 				self.slot_max = max(self.slot_max, max(2*self.n*j+(i+1), 2*self.n*j+2*self.n+1-(i+1)))
 			self.agents[i].set_jobs(jobs)
 
@@ -37,7 +38,7 @@ class Instance(object):
 			for j in range(0, int((self.x-3)/2)):
 				jobs[2*j+3].set_slot([1,2*self.n*j+(i+1)+3*self.n])
 				jobs[2*j+1+3].set_slot([1, 2*self.n*j+2*self.n+1-(i+1)+3*self.n])
-				self.agents[i].add_cout(2*self.n*j+(i+1)+3*self.n+2*self.n*j+2*self.n+1-(i+1)+3*self.n)
+				self.agents[i].calcul_cout(2*self.n*j+(i+1)+3*self.n+2*self.n*j+2*self.n+1-(i+1)+3*self.n)
 				self.slot_max = max(self.slot_max, 2*self.n*j+(i+1)+3*self.n, 2*self.n*j+2*self.n+1-(i+1)+3*self.n)
 			if (i+1)<((self.n+3)/2):
 				jobs[0].set_slot([1, 2*(i+1)-1])
@@ -49,7 +50,7 @@ class Instance(object):
 				jobs[1].set_slot([1, int(((5*self.n+3)/2)-(i+1))])
 				jobs[2].set_slot([1, 3*self.n-(i+1)+1])
 				self.slot_max = max(self.slot_max, 2*(i+1)-self.n-1, int(((5*self.n+3)/2)-(i+1)), 3*self.n-(i+1)+1)
-			self.agents[i].add_cout(((9*self.n+3)/2))
+			self.agents[i].calcul_cout(((9*self.n+3)/2))
 			self.agents[i].set_jobs(jobs)
 
 	def ordo_1_machine_n_pair(self):
@@ -58,26 +59,26 @@ class Instance(object):
 			for j in range(0, int((self.x-3)/2)):
 				jobs[2*j].set_slot([1,2*self.n*j+(i+1)])
 				jobs[2*j+1].set_slot([1, 2*self.n*j+2*self.n+1-(i+1)])
-				self.agents[i].add_cout(2*self.n*j+(i+1)+2*self.n*j+2*self.n+1-(i+1))
+				self.agents[i].calcul_cout(2*self.n*j+(i+1)+2*self.n*j+2*self.n+1-(i+1))
 				self.slot_max = max(self.slot_max, 2*self.n*j+(i+1), 2*self.n*j+2*self.n+1-(i+1))
 			if (i+1)<((self.n/2)+1):
 				jobs[-3].set_slot([1, 2*(i+1)+self.n*(self.x-3)])
 				jobs[-2].set_slot([1, int(((3*self.n+4)/2)-(i+1)+self.n*(self.x-3))])
 				jobs[-1].set_slot([1, 3*self.n-(i+1)+self.n*(self.x-3)])
 				self.slot_max = max(self.slot_max, 2*(i+1)+self.n*(self.x-3), int(((3*self.n+4)/2)-(i+1)+self.n*(self.x-3)), 3*self.n-(i+1)+self.n*(self.x-3))
-				self.agents[i].add_cout(2*(i+1)+self.n*(self.x-3)+int(((3*self.n+4)/2)-(i+1)+self.n*(self.x-3))+3*self.n-(i+1)+self.n*(self.x-3))
+				self.agents[i].calcul_cout(2*(i+1)+self.n*(self.x-3)+int(((3*self.n+4)/2)-(i+1)+self.n*(self.x-3))+3*self.n-(i+1)+self.n*(self.x-3))
 			elif (i+1)<self.n:
 				jobs[-3].set_slot([1, 2*(i+1)-self.n+1+self.n*(self.x-3)])
 				jobs[-2].set_slot([1, int(((5*self.n+2)/2)-(i+1)+self.n*(self.x-3))])
 				jobs[-1].set_slot([1, 3*self.n-(i+1)+self.n*(self.x-3)])
 				self.slot_max = max(self.slot_max, 2*(i+1)-self.n+1+self.n*(self.x-3), int(((5*self.n+2)/2)-(i+1)+self.n*(self.x-3)), 3*self.n-(i+1)+self.n*(self.x-3))
-				self.agents[i].add_cout(2*(i+1)-self.n+1+self.n*(self.x-3)+int(((5*self.n+2)/2)-(i+1)+self.n*(self.x-3))+3*self.n-(i+1)+self.n*(self.x-3))
+				self.agents[i].calcul_cout(2*(i+1)-self.n+1+self.n*(self.x-3)+int(((5*self.n+2)/2)-(i+1)+self.n*(self.x-3))+3*self.n-(i+1)+self.n*(self.x-3))
 			elif (i+1)==self.n:
 				jobs[-3].set_slot([1, 1+self.n*(self.x-3)])
 				jobs[-2].set_slot([1, self.n+1+self.n*(self.x-3)])
 				jobs[-1].set_slot([1, int(3*self.n+(self.n/2)+self.n*(self.x-3))])
 				self.slot_max = max(self.slot_max, 1+self.n*(self.x-3), self.n+1+self.n*(self.x-3), int(3*self.n+(self.n/2)+self.n*(self.x-3)))
-				self.agents[i].add_cout(1+self.n*(self.x-3)+self.n+1+self.n*(self.x-3)+int(3*self.n+(self.n/2)+self.n*(self.x-3)))
+				self.agents[i].calcul_cout(1+self.n*(self.x-3)+self.n+1+self.n*(self.x-3)+int(3*self.n+(self.n/2)+self.n*(self.x-3)))
 			self.agents[i].set_jobs(jobs)
 
 
