@@ -20,3 +20,7 @@ class Tache(object):
 
 	def get_d(self):
 		return self.d
+
+	def affiche_tache(self):
+		print("    Tache", self.nom)
+		print("        deadline :", self.d)

@@ -3,97 +3,48 @@ from instances import *
 from machines import *
 from slots import *
 from taches import *
+import json
+import sys
 
-def sum_T_i(tache, slot):
-	return max(0, (slot[1]-tache.get_d()))
+with open(sys.argv[1], 'r') as f:
+    datastore = json.load(f)
 
-def sum_C_i(tache, slot):
-	return slot[1]
 
-print("================================================================================================================")
-print("x pair")
-j_ = []
-for i in range(4):
-	j_.append(Tache(str(i+1), 12))
-a = AgentsumCi(j_, "a")
 
-j_ = []
-for i in range(4):
-	j_.append(Tache(str(i+1), 12))
-b = AgentsumCi(j_, "b")
 
-j_ = []
-for i in range(4):
-	j_.append(Tache(str(i+1), 12))
-c = AgentsumCi(j_, "c")
+if datastore["algo"] == "ordo 1 machine":
+	a_ = []
+	for i in range(datastore["n"]):
+		j_=[]
+		for j in range(datastore["x"]):
+			j_.append(Tache(str(j+1), datastore["n"]*(datastore["x"]+1)))
+		a_.append(AgentsumCi(j_, str(i+1)+"_"))
+	instance = Instance(a_, 1, datastore["x"])
+	instance.ordo_sum_ci_1_machine()
 
-instance = Instance([a, b, c], 1, len(j_))
-instance.ordo_sum_ci_1_machine()
+if datastore["algo"] == "Round-Robin v1":
+	a_ = []
+	for a in datastore["agents"]:
+		j_ = []
+		for j in a["taches"]:
+			j_.append(Tache(j["nom"], j["d"]))
+		if a["critere"] == "somme des Ci":
+			a_.append(AgentsumCi(j_, a["nom"]))
+		if a["critere"] == "somme des Di":
+			a_.append(AgentsumDi(j_, a["nom"]))
+		if a["critere"] == "somme des Ei":
+			a_.append(AgentsumEi(j_, a["nom"]))
+		if a["critere"] == "somme des Li":
+			a_.append(AgentsumLi(j_, a["nom"]))
+		if a["critere"] == "somme des Si":
+			a_.append(AgentsumSi(j_, a["nom"]))
+		if a["critere"] == "somme des Ti":
+			a_.append(AgentsumTi(j_, a["nom"]))
+		if a["critere"] == "somme des Ui":
+			a_.append(AgentsumUi(j_, a["nom"]))
+		if a["critere"] == "makespan":
+			a_.append(AgentmaxCi(j_, a["nom"]))
+	instance.RR1(datastore["sequence"])
 
-print("=============================================================================================================================")
-print("x impair, n impair")
 
-j_ = []
-for i in range(5):
-	j_.append(Tache(str(i+1), 15))
-a = AgentsumCi(j_, "a")
 
-j_ = []
-for i in range(5):
-	j_.append(Tache(str(i+1), 15))
-b = AgentsumCi(j_, "b")
-
-j_ = []
-for i in range(5):
-	j_.append(Tache(str(i+1), 15))
-c = AgentsumCi(j_, "c")
-
-instance = Instance([a, b, c], 1, len(j_))
-instance.ordo_sum_ci_1_machine()
-
-print("==========================================================================================================================")
-print("x impar, n pair")
-
-j_ = []
-for i in range(5):
-	j_.append(Tache(str(i+1), 20))
-a = AgentsumCi(j_, "a")
-
-j_ = []
-for i in range(5):
-	j_.append(Tache(str(i+1), 20))
-b = AgentsumCi(j_, "b")
-
-j_ = []
-for i in range(5):
-	j_.append(Tache(str(i+1), 20))
-c = AgentsumCi(j_, "c")
-
-j_ = []
-for i in range(5):
-	j_.append(Tache(str(i+1), 20))
-d = AgentsumCi(j_, "d")
-
-instance = Instance([a, b, c, d], 1, 5)
-instance.ordo_sum_ci_1_machine()
-
-print("===============================================================================================================")
-print("Round Robin v1")
-
-a1 = Tache("1", 3)
-a2 = Tache("2", 1)
-a3 = Tache("3", 1)
-a = AgentsumTi([a1, a2, a3], "a")
-
-b1 = Tache("1", 1)
-b2 = Tache("2", 2)
-b3 = Tache("3", 3)
-b = AgentsumTi([b1, b2, b3], "b")
-
-c1 = Tache("1", 4)
-c2 = Tache("2", 4)
-c3 = Tache("3", 4)
-c = AgentsumCi([c1, c2, c3], "c")
-
-instance = Instance([a, b, c], 2, 3)
-instance.RR1([0, 1, 2])

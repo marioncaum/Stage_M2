@@ -10,6 +10,12 @@ class AgentsumTi(object):
 	def __init__(self, jobs, nom):
 		self.jobs = jobs
 		self.nom = nom
+
+	def affiche_agent(self):
+		print("Agent", self.nom)
+		print("    critère : somme des Ti")
+		for j in self.jobs:
+			j.affiche_tache()
 	
 	def critere(self, job, slot):
 		return max(0, slot-job.get_d())
@@ -89,6 +95,12 @@ class AgentsumCi(object):
 	def critere(self, job, slot):
 		return slot
 		
+	def affiche_agent(self):
+		print("Agent", self.nom)
+		print("    critère : somme des Ci")
+		for j in self.jobs:
+			j.affiche_tache()
+
 	def get_jobs(self):
 		return self.jobs
 
@@ -163,6 +175,12 @@ class AgentmaxCi(object):
 	
 	def critere(self, job, slot):
 		return slot
+
+	def affiche_agent(self):
+		print("Agent", self.nom)
+		print("    critère : makespan")
+		for j in self.jobs:
+			j.affiche_tache()
 		
 	def get_jobs(self):
 		return self.jobs
@@ -239,6 +257,12 @@ class AgentsumLi(object):
 	def critere(self, job, slot):
 		return slot-job.get_d()
 		
+	def affiche_agent(self):
+		print("Agent", self.nom)
+		print("    critère : somme des Li")
+		for j in self.jobs:
+			j.affiche_tache()
+
 	def get_jobs(self):
 		return self.jobs
 
@@ -314,6 +338,12 @@ class AgentsumUi(object):
 	def critere(self, job, slot):
 		return slot>job.get_d()
 		
+	def affiche_agent(self):
+		print("Agent", self.nom)
+		print("    critère : somme des Ui")
+		for j in self.jobs:
+			j.affiche_tache()
+
 	def get_jobs(self):
 		return self.jobs
 
@@ -389,6 +419,12 @@ class AgentsumEi(object):
 	def critere(self, job, slot):
 		return max(0, job.get_d()-slot)
 		
+	def affiche_agent(self):
+		print("Agent", self.nom)
+		print("    critère : somme des Ei")
+		for j in self.jobs:
+			j.affiche_tache()
+
 	def get_jobs(self):
 		return self.jobs
 
@@ -464,6 +500,12 @@ class AgentsumDi(object):
 	def critere(self, job, slot):
 		return abs(slot-job.get_d())
 		
+	def affiche_agent(self):
+		print("Agent", self.nom)
+		print("    critère : somme des Di")
+		for j in self.jobs:
+			j.affiche_tache()
+
 	def get_jobs(self):
 		return self.jobs
 
@@ -539,6 +581,12 @@ class AgentsumSi(object):
 	def critere(self, job, slot):
 		return (slot-job.get_d())**2
 		
+	def affiche_agent(self):
+		print("Agent", self.nom)
+		print("    critère : somme des Si")
+		for j in self.jobs:
+			j.affiche_tache()
+
 	def get_jobs(self):
 		return self.jobs
 

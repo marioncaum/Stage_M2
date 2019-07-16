@@ -1,0 +1,63 @@
+{
+    "algo":"Round-Robin v1",
+    "m":2,
+    "n":3,
+    "x":3,
+    "sequence":[0,1,2],
+    "agents":[
+        {
+            "nom":"a",
+            "critere":"somme des Ti",
+            "taches":[
+                {
+                    "nom":"1",
+                    "d":3
+                },
+                {
+                    "nom":"2",
+                    "d":1
+                },
+                {
+                    "nom":"3",
+                    "d":1
+                }
+            ]
+        },
+        {
+            "nom":"b",
+            "critere":"somme des Ti",
+            "taches":[
+                {
+                    "nom":"1",
+                    "d":1
+                },
+                {
+                    "nom":"2",
+                    "d":2
+                },
+                {
+                    "nom":"3",
+                    "d":3
+                }
+            ]
+        },
+        {
+            "nom":"c",
+            "critere":"somme des Ci",
+            "taches":[
+                {
+                    "nom":"1",
+                    "d":4
+                },
+                {
+                    "nom":"2",
+                    "d":4
+                },
+                {
+                    "nom":"3",
+                    "d":4
+                }
+            ]
+        }
+    ]
+}

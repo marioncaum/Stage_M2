@@ -4,6 +4,8 @@ class Instance(object):
 	m = 0
 	x = 0
 	slot_max = 0
+	algo = ""
+	sequence = []
 
 	def __init__(self, agents, m, x):
 		self.agents = agents
@@ -12,6 +14,14 @@ class Instance(object):
 		self.m = m
 
 	def affiche_ordo(self):
+		print(self.algo)
+		print("m =", self.m)
+		print("n =", self.n)
+		print("x =", self.x)
+		for a in self.agents:
+			a.affiche_agent()
+		if self.sequence != []:
+			print("sequence :",self.sequence)
 		sigma = [[None for j in range(self.slot_max)] for i in range(self.m)]
 		for a in self.agents:
 			print("cout agent", a.get_nom(),":",a.get_cout())
@@ -83,6 +93,7 @@ class Instance(object):
 
 
 	def ordo_sum_ci_1_machine(self):
+		self.algo = "Ordonnancement quand tous les agents veulent minimiser la somme des Ci"
 		if self.x%2 == 0:
 			self.ordo_1_machine_x_pair()
 		elif self.n%2 == 1:
@@ -93,6 +104,9 @@ class Instance(object):
 		return
 
 	def RR1(self, sequence):
+		for i in sequence:
+			self.sequence.append(self.agents[i].get_nom())
+		self.algo = "Round-Robin sans réordonnancement"
 		self.slot_max = (self.n*self.x)//self.m+1
 		for a in self.agents:
 			a.tab_cout(self.n, self.x, self.m)
