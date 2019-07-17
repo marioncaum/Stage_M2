@@ -107,7 +107,10 @@ class Instance(object):
 		for i in sequence:
 			self.sequence.append(self.agents[i].get_nom())
 		self.algo = "Round-Robin sans réordonnancement"
-		self.slot_max = (self.n*self.x)//self.m+1
+		if (self.n*self.x)/self.m == (self.n*self.x)//self.m:
+			self.slot_max = (self.n*self.x)//self.m
+		else:
+			self.slot_max = (self.n*self.x)//self.m+1
 		for a in self.agents:
 			a.tab_cout(self.n, self.x, self.m)
 		for u in range(self.x):

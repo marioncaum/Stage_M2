@@ -44,6 +44,7 @@ if datastore["algo"] == "Round-Robin v1":
 			a_.append(AgentsumUi(j_, a["nom"]))
 		if a["critere"] == "makespan":
 			a_.append(AgentmaxCi(j_, a["nom"]))
+	instance = Instance(a_, datastore["m"], datastore["x"])
 	instance.RR1(datastore["sequence"])
 
 
